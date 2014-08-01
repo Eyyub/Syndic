@@ -57,14 +57,25 @@
 }
 
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-3.2"> See RFC 4287 § 3.2</a>
+Describes a person, corporation, or similar entity (hereafter,
+    'person') that indicates the author of the entry or feed.
 <p>
 
-A Person construct  is  an  element  that  describes a person,  corporation,  or
-similar entity (hereafter, 'person').
+    If an atom:entry element does not contain atom:author elements, then
+    the atom:author elements of the contained atom:source element are
+    considered to apply.  In an Atom Feed Document, the atom:author
+    elements of the containing atom:feed element are considered to apply
+    to the entry if there are no atom:author elements in the locations
+    described above.
 <p>
 
-<pre class="codepre"><code class="code">&nbsp;&nbsp;atomPersonConstruct&nbsp;=<br>
+    <pre class="codepre"><code class="code">&nbsp;&nbsp;atomAuthor&nbsp;=&nbsp;element&nbsp;atom:author&nbsp;{&nbsp;atomPersonConstruct&nbsp;}&nbsp;</code></pre>
+<p>
+
+    where
+<p>
+
+<pre class="codepre"><code class="code">atomPersonConstruct&nbsp;=<br>
 &nbsp;&nbsp;&nbsp;&nbsp;atomCommonAttributes,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;(element&nbsp;atom:name&nbsp;{&nbsp;text&nbsp;}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;element&nbsp;atom:uri&nbsp;{&nbsp;atomUri&nbsp;}?<br>
@@ -73,26 +84,15 @@ similar entity (hereafter, 'person').
 </code></pre>
 <p>
 
-This specification  assigns no significance to  the order  of appearance  of the
-child elements in a Person construct. Person constructs allow extension Metadata
-elements (see Section 6.4).
+   <a href=" http://tools.ietf.org/html/rfc4287#section-3.2"> See RFC 4287 § 3.2</a>
 <p>
 
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.1"> See RFC 4287 § 4.2.1</a>
+   This specification assigns no significance to the order of
+   appearance of the child elements in a Person construct. Person
+   constructs allow extension Metadata elements (see Section 6.4).
 <p>
 
-The "atom:author" element is a Person construct that indicates the author of the
-entry or feed.
-<p>
-
-<pre class="codepre"><code class="code">&nbsp;atomAuthor&nbsp;=&nbsp;element&nbsp;atom:author&nbsp;{&nbsp;atomPersonConstruct&nbsp;}&nbsp;</code></pre>
-<p>
-
-If  an  atom:entry element  does  not  contain  atom:author  elements,  then the
-atom:author elements of  the  contained  atom:source  element  are considered to
-apply.  In an  Atom Feed Document,  the  atom:author elements of  the containing
-atom:feed  element  are  considered  to apply  to  the  entry  if  there  are no
-atom:author elements in the locations described above.<br>
+   <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.1"> See RFC 4287 § 4.2.1</a><br>
 </div>
 
 
@@ -121,13 +121,26 @@ atom:author elements in the locations described above.<br>
 }
 
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.2"> See RFC 4287 § 4.2.2 </a>
+The <code class="code">category</code> element conveys information about a category
+    associated with an entry or feed.  This specification assigns no
+    meaning to the content (if any) of this element.
+    <a href="http://tools.ietf.org/html/rfc4287#section-4.2.2"> See RFC 4287 § 4.2.2</a>
 <p>
-
-The "atom:category" element conveys information about a category associated with
-an entry or feed.  This specification assigns no meaning to the content (if any)
-of this element.
-<p>
+<ul>
+<li><code class="code">term</code> is a string that identifies the category to
+      which the entry or feed belongs.
+      <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.2.2">
+      See RFC 4287 § 4.2.2.2</a></li>
+<li><code class="code">scheme</code>, if present, is an IRI that identifies a categorization
+      scheme.
+      <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.2.3">
+      See RFC 4287 § 4.2.2.3</a></li>
+<li><code class="code">label</code>, if present, is a human-readable label for display in
+      end-user applications.  The content of the "label" attribute is
+      Language-Sensitive.  Entities such as "&amp;amp;" and "&amp;lt;"
+      represent their corresponding characters ("&amp;" and "&lt;",
+      respectively), not markup.</li>
+</ul>
 
 <pre class="codepre"><code class="code">&nbsp;&nbsp;atomCategory&nbsp;=<br>
 &nbsp;&nbsp;&nbsp;&nbsp;element&nbsp;atom:category&nbsp;{<br>
@@ -140,28 +153,7 @@ of this element.
 </code></pre>
 <p>
 
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.2.1"> See RFC 4287 § 4.2.2.1 </a>
-<p>
-
-The "term" attribute is a string that identifies the category to which the entry
-or feed belongs. Category elements MUST have a "term" attribute.
-<p>
-
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.2.2"> See RFC 4287 § 4.2.2.2 </a>
-<p>
-
-The  "scheme" attribute  is an  IRI  that  identifies  a  categorization scheme.
-Category elements MAY have a "scheme" attribute.
-<p>
-
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.2.3"> See RFC 4287 § 4.2.2.3 </a>
-<p>
-
-The "label"  attribute provides a  human-readable label for  display in end-user
-applications.  The  content  of  the  "label"  attribute  is Language-Sensitive.
-Entities such  as "&amp;amp;"  and "&amp;lt;"  represent their  corresponding characters
-("&amp;" and "&lt;",  respectively),  not markup.  Category elements MAY have a "label"
-attribute.<br>
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.2.1"> See RFC 4287 § 4.2.2.1 </a><br>
 </div>
 
 
@@ -190,11 +182,20 @@ attribute.<br>
 }
 
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.4"> See RFC 4287 § 4.2.4 </a>
-<p>
+The <code class="code">generator</code> element's content identifies the agent used to
+    generate a feed, for debugging and other purposes.<ul>
+<li><code class="code">content</code> is a human-readable name for the generating agent.
+      Entities such as "&amp;amp;" and "&amp;lt;" represent their corresponding
+      characters ("&amp;" and "&lt;" respectively), not markup.</li>
+<li><code class="code">uri</code>, if present, MUST be an IRI reference <code class="code"><span class="constructor">RFC3987</span></code>.  When
+      dereferenced, the resulting URI (mapped from an IRI, if
+      necessary) SHOULD produce a representation that is relevant to
+      that agent.</li>
+<li><code class="code">version</code>, if present, indicates the version of the generating
+      agent.</li>
+</ul>
 
-The "atom:generator" element's  content identifies the agent used  to generate a
-feed, for debugging and other purposes.
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.4"> See RFC 4287 § 4.2.4 </a>
 <p>
 
 <pre class="codepre"><code class="code">&nbsp;&nbsp;atomGenerator&nbsp;=&nbsp;element&nbsp;atom:generator&nbsp;{<br>
@@ -203,68 +204,56 @@ feed, for debugging and other purposes.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribute&nbsp;version&nbsp;{&nbsp;text&nbsp;}?,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br>
 &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-</code></pre>
-<p>
-
-The  content  of  this element,  when  present,  MUST  be  a  string  that  is a
-human-readable name for  the  generating  agent.  Entities  such  as "&amp;amp;" and
-"&amp;lt;" represent their corresponding characters ("&amp;" and "&lt;" respectively),  not
-markup.
-<p>
-
-The atom:generator element MAY have a "uri" attribute whose value MUST be an IRI
-reference <code class="code"><span class="constructor">RFC3987</span></code>.  When dereferenced,  the resulting URI (mapped from an IRI,
-if necessary) SHOULD produce a representation that is relevant to that agent.
-<p>
-
-The atom:generator  element MAY  have a "version"  attribute that  indicates the
-version of the generating agent.<br>
+</code></pre><br>
 </div>
 
 
 <pre><span id="TYPEicon"><span class="keyword">type</span> <code class="type"></code>icon</span> = <code class="type">Uri.t</code> </pre>
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.5"> See RFC 4287 § 4.2.5 </a>
+The <code class="code">icon</code> element's content is an IRI reference <code class="code"><span class="constructor">RFC3987</span></code> that
+    identifies an image that provides iconic visual identification for
+    a feed.
 <p>
 
-The "atom:icon" element's content is  an IRI reference <code class="code"><span class="constructor">RFC3987</span></code> that identifies
-an image that provides iconic visual identification for a feed.
+    The image SHOULD have an aspect ratio of one (horizontal) to one
+    (vertical) and SHOULD be suitable for presentation at a small
+    size.
+<p>
+
+    <a href="http://tools.ietf.org/html/rfc4287#section-4.2.5"> See RFC 4287 § 4.2.5</a>
 <p>
 
 <pre class="codepre"><code class="code">&nbsp;&nbsp;atomIcon&nbsp;=&nbsp;element&nbsp;atom:icon&nbsp;{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atomCommonAttributes,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-</code></pre>
-<p>
-
-The image SHOULD have an aspect ratio  of one (horizontal) to one (vertical) and
-SHOULD be suitable for presentation at a small size.<br>
+</code></pre><br>
 </div>
 
 
 <pre><span id="TYPEid"><span class="keyword">type</span> <code class="type"></code>id</span> = <code class="type">Uri.t</code> </pre>
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.6"> See RFC 4287 § 4.2.6 </a>
+The <code class="code">id</code> element conveys a permanent, universally unique
+    identifier for an entry or feed.
 <p>
 
-The "atom:id" element conveys a permanent,  universally unique identifier for an
-entry or feed.
+    Its content MUST be an IRI, as defined by <code class="code"><span class="constructor">RFC3987</span></code>. Note that the
+    definition of "IRI" excludes relative references.  Though the IRI
+    might use a dereferencable scheme, Atom Processors MUST NOT assume
+    it can be dereferenced.
+<p>
+
+    There is more information in the RFC but they are not necessary
+    here, at least, they can not be checked here.
+<p>
+
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.6"> See RFC 4287 § 4.2.6 </a>
 <p>
 
 <pre class="codepre"><code class="code">&nbsp;&nbsp;atomId&nbsp;=&nbsp;element&nbsp;atom:id&nbsp;{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atomCommonAttributes,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(atomUri)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-</code></pre>
-<p>
-
-Its content MUST be an IRI, as defined by <code class="code"><span class="constructor">RFC3987</span></code>. Note that the definition of
-"IRI" excludes relative  references.  Though the IRI might  use a dereferencable
-scheme, Atom Processors MUST NOT assume it can be dereferenced.
-<p>
-
-There is more information in the RFC but they are not necessary here,  at least,
-they can not be checked here.<br>
+</code></pre><br>
 </div>
 
 
@@ -313,17 +302,20 @@ they can not be checked here.<br>
 </tr></table>
 
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.7.2"> See RFC 4287 § 4.2.7.2 </a>
+<a href="Syndic_atom.html#TYPElink"><code class="code"><span class="constructor">Syndic_atom</span>.link</code></a> elements MAY have a "rel" attribute that indicates the
+    link relation type.  <b>If the "rel" attribute is not present, the
+    link element MUST be interpreted as if the link relation type is
+    "alternate".</b>
 <p>
 
-atom:link elements MAY  have a "rel" attribute that  indicates the link relation
-type.  <b>If the  "rel"  attribute  is  not  present,  the  link element MUST be
-interpreted as if the link relation type is "alternate".</b>
+    <b>The value of "rel" MUST be a string that is non-empty and
+    matches either the "isegment-nz-nc" or the "IRI" production in
+    <code class="code"><span class="constructor">RFC3987</span></code>.</b>  Note that use of a relative reference other than a
+    simple name is not allowed.
 <p>
 
-<b>The value of "rel" MUST be a  string that is non-empty and matches either the
-"isegment-nz-nc" or the  "IRI"  production  in  <code class="code"><span class="constructor">RFC3987</span></code>.</b>  Note  that use of a
-relative reference other than a simple name is not allowed.<br>
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.7.2">
+    See RFC 4287 § 4.2.7.2 </a><br>
 </div>
 
 
@@ -373,13 +365,48 @@ relative reference other than a simple name is not allowed.<br>
 }
 
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.7"> See RFC 4287 § 4.2.7 </a>
+<code class="code">link</code> defines a reference from an entry or feed to a Web
+    resource.  This specification assigns no meaning to the content
+    (if any) of this element.
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.7">
+    See RFC 4287 § 4.2.7 </a>
 <p>
-
-The "atom:link"  element defines  a reference  from an  entry or  feed to  a Web
-resource.  This specification assigns no meaning to the content (if any) of this
-element.
-<p>
+<ul>
+<li><code class="code">href</code> contains the link's IRI.  The value MUST be a IRI
+      reference <code class="code"><span class="constructor">RFC3987</span></code>.
+      <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.7.3">
+      See RFC 4287 § 4.2.7.3 </a></li>
+<li><code class="code">type_media</code> is an advisory media type: it is a hint about the
+      type of the representation that is expected to be returned when
+      the value of the href attribute is dereferenced.  Note that the
+      type attribute does not override the actual media type returned
+      with the representation.  Link elements MAY have a type
+      attribute, whose value MUST conform to the syntax of a MIME
+      media type <code class="code"><span class="constructor">MIMEREG</span></code>.
+      <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.7.4">
+      See RFC 4287 § 4.2.7.4 </a></li>
+<li><code class="code">hreflang</code> describes the language of the resource pointed to by
+      the href attribute.  When used together with the
+      rel="alternate", it implies a translated version of the
+      entry. Link elements MAY have an hreflang attribute, whose value
+      MUST be a language tag <code class="code"><span class="constructor">RFC3066</span></code>.
+      <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.7.5">
+      See RFC 4287 § 4.2.7.5 </a></li>
+<li><code class="code">title</code> conveys human-readable information about the link.  The
+      content of the "title" attribute is Language-Sensitive. Entities
+      such as "&amp;amp;" and "&amp;lt;" represent their corresponding
+      characters ("&amp;" and "&lt;", respectively), not markup. Link
+      elements MAY have a title attribute.
+      <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.7.6">
+      See RFC 4287 § 4.2.7.6 </a></li>
+<li><code class="code">length</code> indicates an advisory length of the linked content in
+      octets; it is a hint about the content length of the
+      representation returned when the IRI in the href attribute is
+      mapped to a URI and dereferenced.  Note that the length
+      attribute does not override the actual content length of the
+      representation as reported by the underlying protocol.  Link
+      elements MAY have a length attribute.</li>
+</ul>
 
 <pre class="codepre"><code class="code">&nbsp;&nbsp;atomLink&nbsp;=<br>
 &nbsp;&nbsp;&nbsp;&nbsp;element&nbsp;atom:link&nbsp;{<br>
@@ -395,154 +422,111 @@ element.
 </code></pre>
 <p>
 
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.7.1"> See RFC 4287 § 4.2.7.1 </a>
-<p>
-
-The "href" attribute  contains the link's IRI.  atom:link elements  MUST have an
-href attribute, whose value MUST be a IRI reference <code class="code"><span class="constructor">RFC3987</span></code>.
-<p>
-
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.7.3"> See RFC 4287 § 4.2.7.3 </a>
-<p>
-
-On the link element,  the "type" attribute's value is an advisory media type: it
-is a hint about  the type of the representation that is  expected to be returned
-when the value  of  the  href  attribute  is  dereferenced.  Note  that the type
-attribute  does   not  override  the   actual  media  type   returned  with  the
-representation.  Link elements  MAY  have  a  type  attribute,  whose value MUST
-conform to the syntax of a MIME media type <code class="code"><span class="constructor">MIMEREG</span></code>.
-<p>
-
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.7.4"> See RFC 4287 § 4.2.7.4 </a>
-<p>
-
-The  "hreflang"  attribute's content  describes  the  language  of  the resource
-pointed to by the href  attribute.  When used together with the rel="alternate",
-it implies a translated version of the entry. Link elements MAY have an hreflang
-attribute, whose value MUST be a language tag <code class="code"><span class="constructor">RFC3066</span></code>.
-<p>
-
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.7.5"> See RFC 4287 § 4.2.7.5 </a>
-<p>
-
-The "title"  attribute conveys human-readable  information about  the link.  The
-content of the "title" attribute is Language-Sensitive. Entities such as "&amp;amp;"
-and "&amp;lt;" represent their corresponding characters ("&amp;" and "&lt;", respectively),
-not markup. Link elements MAY have a title attribute.
-<p>
-
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.7.6"> See RFC 4287 § 4.2.7.6 </a>
-<p>
-
-The "length"  attribute indicates an advisory  length of  the linked  content in
-octets;  it is  a hint about the  content length of  the representation returned
-when the IRI  in the href attribute  is mapped to a  URI and dereferenced.  Note
-that the  length attribute does  not override the  actual content length  of the
-representation as reported by the underlying protocol.  Link elements MAY have a
-length attribute.<br>
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.7.1">
+    See RFC 4287 § 4.2.7.1 </a><br>
 </div>
 
 
 <pre><span id="TYPElogo"><span class="keyword">type</span> <code class="type"></code>logo</span> = <code class="type">Uri.t</code> </pre>
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.8"> See RFC 4287 § 4.2.8 </a>
+<code class="code">logo</code> is an IRI reference <code class="code"><span class="constructor">RFC3987</span></code> that identifies an image that
+    provides visual identification for a feed.
 <p>
 
-The "atom:logo" element's content is  an IRI reference <code class="code"><span class="constructor">RFC3987</span></code> that identifies
-an image that provides visual identification for a feed.
+    The image SHOULD have an aspect ratio of 2 (horizontal) to 1 (vertical).
+<p>
+
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.8"> See RFC 4287 § 4.2.8</a>
 <p>
 
 <pre class="codepre"><code class="code">&nbsp;&nbsp;atomLogo&nbsp;=&nbsp;element&nbsp;atom:logo&nbsp;{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atomCommonAttributes,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(atomUri)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-</code></pre>
-<p>
-
-The image SHOULD have an aspect ratio of 2 (horizontal) to 1 (vertical).<br>
+</code></pre><br>
 </div>
 
 
 <pre><span id="TYPEpublished"><span class="keyword">type</span> <code class="type"></code>published</span> = <code class="type">CalendarLib.Calendar.t</code> </pre>
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.9"> See RFC 4287 § 4.2.9 </a>
+<code class="code">published</code> is a Date construct indicating an instant in time
+    associated with an event early in the life cycle of the entry.
 <p>
 
-The "atom:published" element  is a Date construct indicating  an instant in time
-associated with an event early in the life cycle of the entry.
+    Typically, <code class="code">published</code> will be associated with the initial
+    creation or first availability of the resource.
 <p>
 
-<pre class="codepre"><code class="code">&nbsp;atomPublished&nbsp;=&nbsp;element&nbsp;atom:published&nbsp;{&nbsp;atomDateConstruct&nbsp;}&nbsp;</code></pre>
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.9"> See RFC 4287 § 4.2.9</a>
 <p>
 
-Typically,  atom:published will be associated with the initial creation or first
-availability of the resource.<br>
+    <pre class="codepre"><code class="code">&nbsp;atomPublished&nbsp;=&nbsp;element&nbsp;atom:published&nbsp;{&nbsp;atomDateConstruct&nbsp;}&nbsp;</code></pre><br>
 </div>
 
 
 <pre><span id="TYPErights"><span class="keyword">type</span> <code class="type"></code>rights</span> = <code class="type">string</code> </pre>
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.10"> See RFC 4287 § 4.2.10 </a>
+<code class="code">rights</code> is a Text construct that conveys information about rights
+    held in and over an entry or feed.
 <p>
 
-The "atom:rights"  element is  a Text construct  that conveys  information about
-rights held in and over an entry or feed.
+    The <code class="code">rights</code> element SHOULD NOT be used to convey machine-readable
+    licensing information.
 <p>
 
-<pre class="codepre"><code class="code">&nbsp;atomRights&nbsp;=&nbsp;element&nbsp;atom:rights&nbsp;{&nbsp;atomTextConstruct&nbsp;}&nbsp;</code></pre>
+    If an atom:entry element does not contain an atom:rights element,
+    then the atom:rights element of the containing atom:feed element,
+    if present, is considered to apply to the entry.
 <p>
 
-The atom:rights element SHOULD NOT  be used to convey machine-readable licensing
-information.
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.10">
+    See RFC 4287 § 4.2.10 </a>
 <p>
 
-If  an atom:entry  element does  not contain  an atom:rights  element,  then the
-atom:rights  element  of  the  containing  atom:feed  element,  if  present,  is
-considered to apply to the entry.<br>
+    <pre class="codepre"><code class="code">&nbsp;atomRights&nbsp;=&nbsp;element&nbsp;atom:rights&nbsp;{&nbsp;atomTextConstruct&nbsp;}&nbsp;</code></pre><br>
 </div>
 
 
 <pre><span id="TYPEtitle"><span class="keyword">type</span> <code class="type"></code>title</span> = <code class="type">string</code> </pre>
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.14"> See RFC 4287 § 4.2.14 </a>
+<code class="code">title</code> is a Text construct that conveys a human-readable title
+    for an entry or feed.
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.14">
+    See RFC 4287 § 4.2.14 </a>
 <p>
 
-The "atom:title"  element is  a Text  construct that  conveys a  human- readable
-title for an entry or feed.
-<p>
-
-<pre class="codepre"><code class="code">&nbsp;atomTitle&nbsp;=&nbsp;element&nbsp;atom:title&nbsp;{&nbsp;atomTextConstruct&nbsp;}&nbsp;</code></pre><br>
+    <pre class="codepre"><code class="code">&nbsp;atomTitle&nbsp;=&nbsp;element&nbsp;atom:title&nbsp;{&nbsp;atomTextConstruct&nbsp;}&nbsp;</code></pre><br>
 </div>
 
 
 <pre><span id="TYPEsubtitle"><span class="keyword">type</span> <code class="type"></code>subtitle</span> = <code class="type">string</code> </pre>
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.12"> See RFC 4287 § 4.2.12 </a>
+<code class="code">subtitle</code> is a Text construct that conveys a human-readable
+    description or subtitle for a feed.
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.12">
+    See RFC 4287 § 4.2.12 </a>
 <p>
 
-The "atom:subtitle" element  is a Text construct that  conveys a human- readable
-description or subtitle for a feed.
-<p>
-
-<pre class="codepre"><code class="code">&nbsp;atomSubtitle&nbsp;=&nbsp;element&nbsp;atom:subtitle&nbsp;{&nbsp;atomTextConstruct&nbsp;}&nbsp;</code></pre><br>
+    <pre class="codepre"><code class="code">&nbsp;atomSubtitle&nbsp;=&nbsp;element&nbsp;atom:subtitle&nbsp;{&nbsp;atomTextConstruct&nbsp;}&nbsp;</code></pre><br>
 </div>
 
 
 <pre><span id="TYPEupdated"><span class="keyword">type</span> <code class="type"></code>updated</span> = <code class="type">CalendarLib.Calendar.t</code> </pre>
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.15"> See RFC 4287 § 4.2.15 </a>
+<code class="code">updated</code> is a Date construct indicating the most recent instant
+    in time when an entry or feed was modified in a way the publisher
+    considers significant.  Therefore, not all modifications
+    necessarily result in a changed <code class="code">updated</code> value.
 <p>
 
-The  "atom:updated" element  is a  Date  construct  indicating  the  most recent
-instant  in time  when an  entry or  feed was  modified in  a way  the publisher
-considers significant.  Therefore, not all modifications necessarily result in a
-changed atom:updated value.
+    Publishers MAY change the value of this element over time.
 <p>
 
-<pre class="codepre"><code class="code">&nbsp;atomUpdated&nbsp;=&nbsp;element&nbsp;atom:updated&nbsp;{&nbsp;atomDateConstruct&nbsp;}&nbsp;</code></pre>
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.15">
+    See RFC 4287 § 4.2.15 </a>
 <p>
 
-Publishers MAY change the value of this element over time.<br>
+    <pre class="codepre"><code class="code">&nbsp;atomUpdated&nbsp;=&nbsp;element&nbsp;atom:updated&nbsp;{&nbsp;atomDateConstruct&nbsp;}&nbsp;</code></pre><br>
 </div>
 
 
@@ -566,7 +550,8 @@ Publishers MAY change the value of this element over time.<br>
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTsource.contributors">contributors</span>&nbsp;: <code class="type"><a href="Syndic_atom.html#TYPEauthor">author</a> list</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><a href=" http://tools.ietf.org/html/rfc4287#section-4.2.3"> See RFC 4287 § 4.2.3 </a></td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><a href=" http://tools.ietf.org/html/rfc4287#section-4.2.3">
+        See RFC 4287 § 4.2.3 </a></td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
@@ -634,17 +619,32 @@ Publishers MAY change the value of this element over time.<br>
 }
 
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.11"> See RFC 4287 § 4.2.11 </a>
+If an atom:entry is copied from one feed into another feed, then
+    the source atom:feed's metadata (all child elements of atom:feed
+    other than the atom:entry elements) MAY be preserved within the
+    copied entry by adding an atom:source child element, if it is not
+    already present in the entry, and including some or all of the
+    source feed's Metadata elements as the atom:source element's
+    children. Such metadata SHOULD be preserved if the source
+    atom:feed contains any of the child elements atom:author,
+    atom:contributor, atom:rights, or atom:category and those child
+    elements are not present in the source atom:entry.
 <p>
 
-If an  atom:entry is copied  from one feed  into another feed,  then  the source
-atom:feed's metadata (all child elements  of atom:feed other than the atom:entry
-elements) MAY  be preserved  within the  copied entry  by adding  an atom:source
-child element,  if it is not already present in the entry, and including some or
-all  of  the  source  feed's  Metadata  elements  as  the  atom:source element's
-children. Such metadata SHOULD be preserved if the source atom:feed contains any
-of   the  child   elements  atom:author,   atom:contributor,   atom:rights,   or
-atom:category and those child elements are not present in the source atom:entry.
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.11">
+    See RFC 4287 § 4.2.11 </a>
+<p>
+
+    The atom:source element is designed to allow the aggregation of
+    entries from different feeds while retaining information about an
+    entry's source feed.  For this reason, Atom Processors that are
+    performing such aggregation SHOULD include at least the required
+    feed-level Metadata elements (atom:id, atom:title, and
+    atom:updated) in the atom:source element.
+<p>
+
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.1.2">
+    See RFC 4287 § 4.1.2 for more details.</a>
 <p>
 
 <pre class="codepre"><code class="code">&nbsp;&nbsp;atomSource&nbsp;=<br>
@@ -664,18 +664,7 @@ atom:category and those child elements are not present in the source atom:entry.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomUpdated?<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;extensionElement&nbsp;*&nbsp;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-</code></pre>
-<p>
-
-The atom:source  element is designed to  allow the  aggregation of  entries from
-different feeds while  retaining information about an  entry's source feed.  For
-this reason, Atom Processors that are performing such aggregation SHOULD include
-at least  the required feed-level  Metadata elements (atom:id,  atom:title,  and
-atom:updated) in the atom:source element.
-<p>
-
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.1.2"> See RFC 4287 § 4.1.2 for
-more details.</a><br>
+</code></pre><br>
 </div>
 
 
@@ -710,25 +699,21 @@ more details.</a><br>
 </tr></table>
 
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-3.1.1"> See RFC 4287 § 3.1.1 </a>
+Text (<a href="Syndic_atom.html#TYPEcontent"><code class="code"><span class="constructor">Syndic_atom</span>.content</code></a>) constructs have a <code class="code">type_content</code> attribute. When
+    present, the value MUST be one of <code class="code"><span class="constructor">Text</span></code>, <code class="code"><span class="constructor">Html</span></code>, or <code class="code"><span class="constructor">Xhtml</span></code>.
+    When the Atom feed contains no indication, <code class="code"><span class="constructor">Text</span></code> is used.
 <p>
 
-Text constructs MAY have a "type" attribute. When present, the value MUST be one
-of <code class="code"><span class="constructor">Text</span></code>,  <code class="code"><span class="constructor">Html</span></code>,  or <code class="code"><span class="constructor">Xhtml</span></code>.  If the "type" attribute is not provided,  Atom
-Processors MUST behave as though it were present with a value of "text".  Unlike
-the atom:content element  defined in Section 4.1.3,  MIME  media types <code class="code"><span class="constructor">MIMEREG</span></code>
-MUST NOT be used as values for the "type" attribute on Text constructs.
+    <a href=" http://tools.ietf.org/html/rfc4287#section-3.1.1"> See RFC 4287 § 3.1.1</a>
 <p>
 
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.1.3.1"> See RFC 4287 § 4.1.3.1 </a>
+    When the value is <code class="code"><span class="constructor">Mime</span> m</code>, <code class="code">m</code> MUST conform to the syntax of a
+    MIME media type, but MUST NOT be a composite type (see Section
+    4.2.6 of <code class="code"><span class="constructor">MIMEREG</span></code>).
 <p>
 
-On the  atom:content element,  the value of  the "type" attribute MAY  be one of
-"text",  "html",  or "xhtml".  Failing that,  it MUST conform to the syntax of a
-MIME  media type,  but  MUST NOT  be a  composite  type  (see  Section  4.2.6 of
-<code class="code"><span class="constructor">MIMEREG</span></code>).  If neither  the type attribute  nor the src  attribute is provided,
-Atom Processors  MUST behave as  though the type  attribute were present  with a
-value of "text".<br>
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.1.3.1">
+    See RFC 4287 § 4.1.3.1 </a><br>
 </div>
 
 
@@ -757,11 +742,26 @@ value of "text".<br>
 }
 
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.1.3"> See RFC 4287 § 4.1.3 </a>
+<code class="code">content</code> either contains or links to the content of the entry.
+    The value of <code class="code">content</code> is Language-Sensitive.
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.1.3"> See RFC 4287 § 4.1.3</a>
 <p>
+<ul>
+<li><code class="code">src</code>, if present, MUST be an IRI reference <code class="code"><span class="constructor">RFC3987</span></code>.  If <code class="code">src</code>
+      is present, <code class="code">data</code> MUST be empty.  Atom Processors MAY use the
+      IRI to retrieve the content and MAY choose to ignore remote
+      content or to present it in a different manner than local
+      content.</li>
+<li>If <code class="code">src</code> is present, <code class="code">ty</code> attribute SHOULD be provided and MUST
+      be a MIME media type <code class="code"><span class="constructor">MIMEREG</span></code>, rather than <code class="code"><span class="constructor">Text</span></code>, <code class="code"><span class="constructor">Html</span></code>, or
+      <code class="code"><span class="constructor">Xhtml</span></code>.  The value is advisory; that is to say, when the
+      corresponding URI (mapped from an IRI, if necessary) is
+      dereferenced, if the server providing that content also provides
+      a media type, the server-provided media type is authoritative.</li>
+</ul>
 
-The "atom:content" element either contains or links to the content of the entry.
-The content of atom:content is Language-Sensitive.
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.1.3.2">
+    See RFC 4287 § 4.1.3.2 </a>
 <p>
 
 <pre class="codepre"><code class="code">&nbsp;&nbsp;atomInlineTextContent&nbsp;=<br>
@@ -797,41 +797,26 @@ The content of atom:content is Language-Sensitive.
 &nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;atomInlineXHTMLContent<br>
 &nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;atomInlineOtherContent<br>
 &nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;atomOutOfLineContent<br>
-</code></pre>
-<p>
-
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.1.3.2"> See RFC 4287 § 4.1.3.2 </a>
-<p>
-
-atom:content MAY have  a "src" attribute,  whose value MUST  be an IRI reference
-<code class="code"><span class="constructor">RFC3987</span></code>.  If the "src" attribute is present, atom:content MUST be empty.  Atom
-Processors MAY  use the IRI  to retrieve the  content and  MAY choose  to ignore
-remote content or to present it in a different manner than local content.
-<p>
-
-If the "src" attribute is present,  the  "type" attribute SHOULD be provided and
-MUST be a MIME media type <code class="code"><span class="constructor">MIMEREG</span></code>, rather than "text", "html", or "xhtml". The
-value is advisory;  that is to say,  when  the corresponding URI (mapped from an
-IRI,  if necessary) is dereferenced,  if the  server providing that content also
-provides a media type, the server-provided media type is authoritative.<br>
+</code></pre><br>
 </div>
 
 
 <pre><span id="TYPEsummary"><span class="keyword">type</span> <code class="type"></code>summary</span> = <code class="type">string</code> </pre>
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.2.13"> See RFC 4287 § 4.2.13 </a>
+<code class="code">summary</code> is a Text construct that conveys a short summary,
+    abstract, or excerpt of an entry.
 <p>
 
-The "atom:summary"  element is a Text  construct that  conveys a  short summary,
-abstract, or excerpt of an entry.
+    It is not advisable for <code class="code">summary</code> to duplicate <a href="Syndic_atom.html#TYPEtitle"><code class="code"><span class="constructor">Syndic_atom</span>.title</code></a> or
+    <a href="Syndic_atom.html#TYPEcontent"><code class="code"><span class="constructor">Syndic_atom</span>.content</code></a> because Atom Processors might assume there is a
+    useful summary when there is none.
 <p>
 
-<pre class="codepre"><code class="code">&nbsp;atomSummary&nbsp;=&nbsp;element&nbsp;atom:summary&nbsp;{&nbsp;atomTextConstruct&nbsp;}&nbsp;</code></pre>
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.13">
+    See RFC 4287 § 4.2.13 </a>
 <p>
 
-It is  not advisable  for the  atom:summary element  to duplicate  atom:title or
-atom:content because Atom Processors might assume there is a useful summary when
-there is none.<br>
+    <pre class="codepre"><code class="code">&nbsp;atomSummary&nbsp;=&nbsp;element&nbsp;atom:summary&nbsp;{&nbsp;atomTextConstruct&nbsp;}&nbsp;</code></pre><br>
 </div>
 
 
@@ -923,13 +908,46 @@ there is none.<br>
 }
 
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.1.2"> See RFC 4287 § 4.1.2 </a>
+<code class="code">entry</code> represents an individual entry, acting as a container for
+    metadata and data associated with the entry.  This element can
+    appear as a child of the atom:feed element, or it can appear as
+    the document (i.e., top-level) element of a stand-alone Atom Entry
+    Document.
 <p>
 
-The "atom:entry" element represents an  individual entry,  acting as a container
-for metadata and  data associated with the entry.  This element  can appear as a
-child  of the  atom:feed element,  or  it  can  appear  as  the  document (i.e.,
-top-level) element of a stand-alone Atom Entry Document.
+    This specification assigns no significance to the order of
+    appearance of the child elements of atom:entry.
+<p>
+
+    The following child elements are defined by this specification
+    (note that it requires the presence of some of these elements):
+<p>
+<ul>
+<li><code class="code">entry</code> MUST contain one or more <code class="code">author</code>, unless the <code class="code">entry</code>
+      contains a <code class="code">sources</code> element that contains an <code class="code">author</code> or, in an
+      Atom Feed Document, the <a href="Syndic_atom.html#TYPEfeed"><code class="code"><span class="constructor">Syndic_atom</span>.feed</code></a> element contains an <code class="code">author</code>
+      element itself.</li>
+<li>if <code class="code">content = <span class="constructor">None</span></code>, then <code class="code">links</code> MUST contain at least one
+      element with a rel attribute value of <code class="code"><span class="constructor">Alternate</span></code>.</li>
+<li>There MUST NOT be more than one element of <code class="code">links</code> with a rel
+      attribute value of <code class="code"><span class="constructor">Alternate</span></code> that has the same combination of
+      type and hreflang attribute values.</li>
+<li>There MAY be additional elements of <code class="code">links</code> beyond those
+      described above.</li>
+<li>There MUST be an <code class="code">summary</code> in either of the following cases:
+      <ul>
+<li>the atom:entry contains an atom:content that has a "src"
+         attribute (and is thus empty).</li>
+<li>the atom:entry contains content that is encoded in Base64;
+         i.e., the "type" attribute of atom:content is a MIME media
+         type <code class="code"><span class="constructor">MIMEREG</span></code>, but is not an XML media type <code class="code"><span class="constructor">RFC3023</span></code>, does
+         not begin with "text/", and does not end with "/xml" or
+         "+xml".</li>
+</ul>
+</li>
+</ul>
+
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.1.2"> See RFC 4287 § 4.1.2</a>
 <p>
 
 <pre class="codepre"><code class="code">&nbsp;&nbsp;atomEntry&nbsp;=<br>
@@ -949,54 +967,7 @@ top-level) element of a stand-alone Atom Entry Document.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomUpdated<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;extensionElement&nbsp;*&nbsp;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-</code></pre>
-<p>
-
-This specification  assigns no significance to  the order  of appearance  of the
-child elements of atom:entry.
-<p>
-
-The following  child elements are defined  by this  specification (note  that it
-requires the presence of some of these elements):
-<p>
-
-<ul>
-<li><b>atom:entry elements MUST contain one or more atom:author elements,  unless
-the atom:entry contains  an  atom:source  element  that  contains an atom:author
-element  or,  in  an Atom  Feed  Document,  the  atom:feed  element  contains an
-atom:author element itself.</b></li>
-<li>atom:entry elements MAY contain any number of atom:category
-elements.</li>
-<li>atom:entry elements MUST NOT contain more than one atom:content element.</li>
-<li>atom:entry elements MAY contain any number of atom:contributor elements.</li>
-<li>atom:entry elements MUST contain exactly one atom:id element.</li>
-<li> <b>atom:entry  elements that  contain  no  child  atom:content  element MUST
-contain  at  least  one  atom:link  element   with  a  rel  attribute  value  of
-"alternate".</b></li>
-<li><b>atom:entry elements MUST NOT  contain more than one atom:link element with
-a rel attribute value  of "alternate" that has the same  combination of type and
-hreflang attribute values.</b></li>
-<li>atom:entry  elements MAY contain  additional atom:link elements  beyond those
-described above.</li>
-<li>atom:entry elements MUST NOT contain more than one atom:published element.</li>
-<li>atom:entry elements MUST NOT contain more than one atom:rights element.</li>
-<li>atom:entry elements MUST NOT contain more than one atom:source element.</li>
-<li>atom:entry  elements MUST contain an  atom:summary element  in either  of the
-following cases:
-  <ul>
-<li>the atom:entry contains an atom:content  that has a "src" attribute (and is
-  thus empty).</li>
-<li>the atom:entry contains content that is encoded in Base64; i.e., the "type"
-  attribute of atom:content  is a MIME media type <code class="code"><span class="constructor">MIMEREG</span></code>,  but  is not an XML
-  media type  <code class="code"><span class="constructor">RFC3023</span></code>,  does not  begin with "text/",  and  does not  end with
-  "/xml" or "+xml".</li>
-</ul>
-</li>
-<li>atom:entry elements MUST NOT contain more than one atom:summary element.</li>
-<li>atom:entry elements MUST contain exactly one atom:title element.</li>
-<li>atom:entry elements MUST contain exactly one atom:updated element.</li>
-</ul>
-<br>
+</code></pre><br>
 </div>
 
 
@@ -1095,13 +1066,35 @@ following cases:
 }
 
 <div class="info ">
-<a href=" http://tools.ietf.org/html/rfc4287#section-4.1.1"> See RFC 4287 § 4.1.1 </a>
+<code class="code">feed</code> is the document (i.e., top-level) element of an Atom Feed
+    Document, acting as a container for metadata and data associated
+    with the feed. Its element children consist of metadata elements
+    followed by zero or more atom:entry child elements.
+<p>
+<ul>
+<li><code class="code">feed</code> MUST contain one or more <code class="code">author</code>, unless all of the
+      <a href="Syndic_atom.html#TYPEentry"><code class="code"><span class="constructor">Syndic_atom</span>.entry</code></a> elements of <code class="code">entries</code> contain at least one <code class="code">author</code>
+      element.</li>
+<li>one of the <code class="code">links</code> SHOULD have a <code class="code">rel</code> attribute value of
+      <code class="code"><span class="constructor">Self</span></code>.  This is the preferred URI for retrieving Atom Feed
+      Documents representing this Atom feed.</li>
+<li>There MUST NOT be more than one element of <code class="code">links</code> with a rel
+      attribute value of <code class="code"><span class="constructor">Alternate</span></code> that has the same combination of
+      type and hreflang attribute values.</li>
+<li>There may be additional elements in <code class="code">links</code> beyond those
+      described above.</li>
+</ul>
+
+    If multiple <a href="Syndic_atom.html#TYPEentry"><code class="code"><span class="constructor">Syndic_atom</span>.entry</code></a> elements with the same <a href="Syndic_atom.html#TYPEid"><code class="code"><span class="constructor">Syndic_atom</span>.id</code></a> value appear
+    in an Atom Feed Document, they represent the same entry.  Their
+    <a href="Syndic_atom.html#TYPEupdated"><code class="code"><span class="constructor">Syndic_atom</span>.updated</code></a> timestamps SHOULD be different.  If an Atom Feed
+    Document contains multiple entries with the same <a href="Syndic_atom.html#TYPEid"><code class="code"><span class="constructor">Syndic_atom</span>.id</code></a>, Atom
+    Processors MAY choose to display all of them or some subset of
+    them. One typical behavior would be to display only the entry with
+    the latest <a href="Syndic_atom.html#TYPEupdated"><code class="code"><span class="constructor">Syndic_atom</span>.updated</code></a> timestamp.
 <p>
 
-The "atom:feed"  element is the  document (i.e.,  top-level) element  of an Atom
-Feed Document,  acting as a container for  metadata and data associated with the
-feed. Its element children consist of metadata elements followed by zero or more
-atom:entry child elements.
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.1.1"> See RFC 4287 § 4.1.1</a>
 <p>
 
 <pre class="codepre"><code class="code">&nbsp;&nbsp;atomFeed&nbsp;=<br>
@@ -1122,54 +1115,13 @@ atom:entry child elements.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;extensionElement&nbsp;*&nbsp;),<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atomEntry*<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-</code></pre>
-<p>
-
-This specification assigns  no significance to the order  of atom:entry elements
-within the feed.
-<p>
-
-The following  child elements are defined  by this specification  (note that the
-presence of some of these elements is required):
-<p>
-
-<ul>
-<li>atom:feed elements MUST contain one or more atom:author elements,  unless all
-of  the atom:feed  element's child  atom:entry  elements  contain  at  least one
-atom:author element.</li>
-<li>atom:feed elements MAY contain any number of atom:category elements.</li>
-<li>atom:feed elements MAY contain any number of atom:contributor elements.</li>
-<li>atom:feed elements MUST NOT contain more than one atom:generator element.</li>
-<li>atom:feed elements MUST NOT contain more than one atom:icon element.</li>
-<li>atom:feed elements MUST NOT contain more than one atom:logo element.</li>
-<li>atom:feed elements MUST contain exactly one atom:id element.</li>
-<li>atom:feed elements SHOULD contain one  atom:link element with a rel attribute
-value of "self".  This  is the preferred URI for  retrieving Atom Feed Documents
-representing this Atom feed.</li>
-<li>atom:feed  elements MUST NOT contain  more than one atom:link  element with a
-rel attribute  value of "alternate"  that has the  same combination of  type and
-hreflang attribute values.</li>
-<li>atom:feed  elements MAY  contain additional  atom:link elements  beyond those
-described above.</li>
-<li>atom:feed elements MUST NOT contain more than one atom:rights element.</li>
-<li>atom:feed elements MUST NOT contain more than one atom:subtitle element.</li>
-<li>atom:feed elements MUST contain exactly one atom:title element.</li>
-<li>atom:feed elements MUST contain exactly one atom:updated element.</li>
-</ul>
-
-<p>
-
-If multiple  atom:entry elements with the  same atom:id value appear  in an Atom
-Feed Document,  they  represent the  same entry.  Their  atom:updated timestamps
-SHOULD be different. If an Atom Feed Document contains multiple entries with the
-same atom:id,  Atom Processors MAY choose to  display all of them or some subset
-of them. One typical behavior would be to display only the entry with the latest
-atom:updated timestamp.<br>
+</code></pre><br>
 </div>
 
 
-<pre><span id="VALanalyze"><span class="keyword">val</span> analyze</span> : <code class="type">Xmlm.input -> <a href="Syndic_atom.html#TYPEfeed">feed</a></code></pre>
-<pre><span id="VALunsafe"><span class="keyword">val</span> unsafe</span> : <code class="type">Xmlm.input -><br>       [> `Feed of<br>            [> `Author of<br>                 [> `Email of string | `Name of string | `URI of string ] list<br>             | `Category of<br>                 [> `Label of string | `Scheme of string | `Term of string ] list<br>             | `Contributor of<br>                 [> `Email of string | `Name of string | `URI of string ] list<br>             | `Entry of<br>                 [> `Author of<br>                      [> `Email of string | `Name of string | `URI of string ] list<br>                  | `Category of<br>                      [> `Label of string | `Scheme of string | `Term of string ]<br>                      list<br>                  | `Content of<br>                      [> `Data of string | `SRC of string | `Type of string ] list<br>                  | `Contributor of<br>                      [> `Email of string | `Name of string | `URI of string ] list<br>                  | `ID of [> `URI of string ] list<br>                  | `Link of<br>                      [> `HREF of string<br>                       | `HREFLang of string<br>                       | `Length of string<br>                       | `Rel of string<br>                       | `Title of string<br>                       | `Type of string ]<br>                      list<br>                  | `Published of [> `Date of string ] list<br>                  | `Rights of [> `Data of string ] list<br>                  | `Source of<br>                      [> `Author of<br>                           [> `Email of string | `Name of string | `URI of string ]<br>                           list<br>                       | `Category of<br>                           [> `Label of string | `Scheme of string | `Term of string ]<br>                           list<br>                       | `Contributor of<br>                           [> `Email of string | `Name of string | `URI of string ]<br>                           list<br>                       | `Generator of<br>                           [> `Content of string<br>                            | `URI of string<br>                            | `Version of string ]<br>                           list<br>                       | `ID of [> `URI of string ] list<br>                       | `Icon of [> `URI of string ] list<br>                       | `Link of<br>                           [> `HREF of string<br>                            | `HREFLang of string<br>                            | `Length of string<br>                            | `Rel of string<br>                            | `Title of string<br>                            | `Type of string ]<br>                           list<br>                       | `Logo of [> `URI of string ] list<br>                       | `Rights of [> `Data of string ] list<br>                       | `Subtitle of [> `Data of string ] list<br>                       | `Title of [> `Data of string ] list<br>                       | `Updated of [> `Date of string ] list ]<br>                      list<br>                  | `Summary of [> `Data of string ] list<br>                  | `Title of [> `Data of string ] list<br>                  | `Updated of [> `Date of string ] list ]<br>                 list<br>             | `Generator of<br>                 [> `Content of string | `URI of string | `Version of string ] list<br>             | `ID of [> `URI of string ] list<br>             | `Icon of [> `URI of string ] list<br>             | `Link of<br>                 [> `HREF of string<br>                  | `HREFLang of string<br>                  | `Length of string<br>                  | `Rel of string<br>                  | `Title of string<br>                  | `Type of string ]<br>                 list<br>             | `Logo of [> `URI of string ] list<br>             | `Rights of [> `Data of string ] list<br>             | `Subtitle of [> `Data of string ] list<br>             | `Title of [> `Data of string ] list<br>             | `Updated of [> `Date of string ] list ]<br>            list ]</code></pre><div class="info ">
-Analysis without verification, enjoy !<br>
+<pre><span id="VALanalyze"><span class="keyword">val</span> analyze</span> : <code class="type">Xmlm.input -> <a href="Syndic_atom.html#TYPEfeed">feed</a></code></pre><div class="info ">
+<code class="code">analyze xml</code> parse <code class="code">xml</code>.<br>
+<b>Raises</b> <code>Error.raise_expectation</code> if <code class="code">xml</code> is not a valid RSS2
+    document.<br>
 </div>
 </body></html>
