@@ -21,43 +21,13 @@
 &nbsp;</div>
 <h1>Module <a href="type_Syndic_rss2.Error.html">Syndic_rss2.Error</a></h1>
 
-<pre><span class="keyword">module</span> Error: <code class="type"><a href="Syndic_error.T.html">Syndic_error.T</a></code><code class="type"> </code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Error: <code class="code"><span class="keyword">sig</span></code> <a href="Syndic_rss2.Error.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
 
-<pre><code><span id="TYPEexpected_type"><span class="keyword">type</span> <code class="type"></code>expected_type</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTexpected_type.Attr"><span class="constructor">Attr</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
+<pre><span class="keyword">include</span> <a href="Syndic_error.T.html">Syndic_error.T</a></pre>
 
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTexpected_type.Tag"><span class="constructor">Tag</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
+<pre><span id="EXCEPTIONSize_Exceeded"><span class="keyword">exception</span> Size_Exceeded</span> <span class="keyword">of</span> <code class="type">string * int * int</code></pre>
 
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTexpected_type.Data"><span class="constructor">Data</span></span></code></td>
+<pre><span id="EXCEPTIONItem_expectation"><span class="keyword">exception</span> Item_expectation</span></pre>
 
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTexpected_type.Root"><span class="constructor">Root</span></span></code></td>
-
-</tr></table>
-
-
-
-<pre><span id="EXCEPTIONExpected"><span class="keyword">exception</span> Expected</span> <span class="keyword">of</span> <code class="type"><a href="Syndic_error.T.html#TYPEexpected_type">expected_type</a> * <a href="Syndic_error.T.html#TYPEexpected_type">expected_type</a></code></pre>
-
-<pre><span id="EXCEPTIONExpected_Leaf"><span class="keyword">exception</span> Expected_Leaf</span></pre>
-
-<pre><span id="VALstring_of_expectation"><span class="keyword">val</span> string_of_expectation</span> : <code class="type"><a href="Syndic_error.T.html#TYPEexpected_type">expected_type</a> * <a href="Syndic_error.T.html#TYPEexpected_type">expected_type</a> -> string</code></pre>
-<pre><span id="VALraise_expectation"><span class="keyword">val</span> raise_expectation</span> : <code class="type"><a href="Syndic_error.T.html#TYPEexpected_type">expected_type</a> -> <a href="Syndic_error.T.html#TYPEexpected_type">expected_type</a> -> 'a</code></pre></body></html>
+<pre><span id="VALstring_of_size_exceeded"><span class="keyword">val</span> string_of_size_exceeded</span> : <code class="type">string * int * int -> string</code></pre>
+<pre><span id="VALstring_of_item_exceptation"><span class="keyword">val</span> string_of_item_exceptation</span> : <code class="type">string</code></pre></body></html>
