@@ -43,17 +43,22 @@
 </td></tr>
 <tr><td><a href="Syndic_rss1.html#TYPEchannel">channel</a> [<a href="Syndic_rss1.html">Syndic_rss1</a>]</td>
 <td><div class="info">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.3"> See RSS 1.0 § 5.3 </a>
+The channel element contains metadata describing the channel
+    itself, including a title, brief description, and URL link to the
+    described resource (the channel provider's home page, for
+    instance).
 </div>
 </td></tr>
 <tr><td><a href="Syndic_rss1.html#TYPEchannel_image">channel_image</a> [<a href="Syndic_rss1.html">Syndic_rss1</a>]</td>
 <td><div class="info">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.3.4"> See RSS 1.0 § 5.3.4 </a>
+Establishes an RDF association between the optional image element
+    <code class="code">5.4</code> and this particular RSS channel.
 </div>
 </td></tr>
 <tr><td><a href="Syndic_rss1.html#TYPEchannel_textinput">channel_textinput</a> [<a href="Syndic_rss1.html">Syndic_rss1</a>]</td>
 <td><div class="info">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.3.6"> See RSS 1.0 § 5.3.6 </a>
+Establishes an RDF association between the optional textinput
+    element <code class="code">5.6</code> and this particular RSS channel.
 </div>
 </td></tr>
 <tr><td><a href="Syndic_rss2.html#TYPEcloud">cloud</a> [<a href="Syndic_rss2.html">Syndic_rss2</a>]</td>
@@ -69,7 +74,18 @@
 <tr><td align="left"><br>D</td></tr>
 <tr><td><a href="Syndic_rss1.html#TYPEdescription">description</a> [<a href="Syndic_rss1.html">Syndic_rss1</a>]</td>
 <td><div class="info">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.3.3"> See RSS 1.0 § 5.3.3 </a>
+This can be a brief description of the channel's content, function, source, etc.
+      <a href=" http://web.resource.org/rss/1.0/spec#s5.3.3"> See RSS 1.0 § 5.3.3</a>;, or a brief description/abstract of the item.
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.5.3"> See RSS 1.0 § 5.5.3</a>;, or a brief description of the textinput field's purpose. For
+    example: "Subscribe to our newsletter for..." or "Search our site's
+    archive of..."
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.6.2"> See RSS 1.0 § 5.6.2</a>.
+<pre class="codepre"><code class="code"><span class="constructor">Syntax</span>:&nbsp;&lt;description&gt;{description}&lt;/description&gt;<br>
+<span class="constructor">Requirement</span>:&nbsp;<span class="constructor">Required</span>&nbsp;only&nbsp;<span class="keyword">for</span>&nbsp;channel&nbsp;<span class="keyword">and</span>&nbsp;textinput<br>
+<span class="constructor">Model</span>:&nbsp;(<span class="keywordsign">#</span><span class="constructor">PCDATA</span>)<br>
+(<span class="constructor">Suggested</span>)&nbsp;<span class="constructor">Maximum</span>&nbsp;<span class="constructor">Length</span>:&nbsp;500&nbsp;<span class="keyword">for</span>&nbsp;channel&nbsp;<span class="keyword">and</span>&nbsp;item<br>
+(<span class="constructor">Suggested</span>)&nbsp;<span class="constructor">Maximum</span>&nbsp;<span class="constructor">Length</span>:&nbsp;100&nbsp;<span class="keyword">for</span>&nbsp;textinput<br>
+</code></pre>
 </div>
 </td></tr>
 <tr><td align="left"><br>E</td></tr>
@@ -120,7 +136,7 @@
 </td></tr>
 <tr><td><a href="Syndic_rss1.html#TYPEimage">image</a> [<a href="Syndic_rss1.html">Syndic_rss1</a>]</td>
 <td><div class="info">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.4"> See RSS 1.0 § 5.4 </a>
+An image to be associated with an HTML rendering of the channel.
 </div>
 </td></tr>
 <tr><td><a href="Syndic_rss2.html#TYPEitem">item</a> [<a href="Syndic_rss2.html">Syndic_rss2</a>]</td>
@@ -130,12 +146,15 @@
 </td></tr>
 <tr><td><a href="Syndic_rss1.html#TYPEitem">item</a> [<a href="Syndic_rss1.html">Syndic_rss1</a>]</td>
 <td><div class="info">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.5"> See RSS 1.0 § 5.5 </a>
+While commonly a news headline, with RSS 1.0's modular
+    extensibility, this can be just about anything: discussion
+    posting, job listing, software patch -- any object with a URI.
 </div>
 </td></tr>
 <tr><td><a href="Syndic_rss1.html#TYPEitems">items</a> [<a href="Syndic_rss1.html">Syndic_rss1</a>]</td>
 <td><div class="info">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.3.5"> See RSS 1.0 § 5.3.5 </a>
+An RDF table of contents, associating the document's items <code class="code">5.5</code>
+    with this particular RSS channel.
 </div>
 </td></tr>
 <tr><td align="left"><br>L</td></tr>
@@ -148,7 +167,19 @@
 </td></tr>
 <tr><td><a href="Syndic_rss1.html#TYPElink">link</a> [<a href="Syndic_rss1.html">Syndic_rss1</a>]</td>
 <td><div class="info">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.3.2"> See RSS 1.0 § 5.3.2 </a>
+This can be The URL to which an HTML rendering of the channel title will link,
+    commonly the parent site's home or news page.
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.3.2"> See RSS 1.0 § 5.3.2</a>, Or the URL to which an HTML rendering of the channel image will
+    link.  This, as with the channel's title link, is commonly the
+    parent site's home or news page.
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.4.3"> See RSS 1.0 § 5.4.3</a>, Or the item's URL.
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.5.2"> See RSS 1.0 § 5.5.2</a>, Or the URL to which a textinput submission will be directed (using GET).
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.6.4"> See RSS 1.0 § 5.6.4</a>
+<pre class="codepre"><code class="code"><span class="constructor">Syntax</span>:&nbsp;&lt;link&gt;{link}&lt;/link&gt;<br>
+<span class="constructor">Requirement</span>:&nbsp;<span class="constructor">Required</span>&nbsp;<span class="keyword">for</span>&nbsp;all<br>
+<span class="constructor">Model</span>:&nbsp;(<span class="keywordsign">#</span><span class="constructor">PCDATA</span>)<br>
+(<span class="constructor">Suggested</span>)&nbsp;<span class="constructor">Maximum</span>&nbsp;<span class="constructor">Length</span>:&nbsp;500<br>
+</code></pre>
 </div>
 </td></tr>
 <tr><td><a href="Syndic_atom.html#TYPElogo">logo</a> [<a href="Syndic_atom.html">Syndic_atom</a>]</td>
@@ -159,7 +190,7 @@
 <tr><td align="left"><br>N</td></tr>
 <tr><td><a href="Syndic_rss1.html#TYPEname">name</a> [<a href="Syndic_rss1.html">Syndic_rss1</a>]</td>
 <td><div class="info">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.6.3"> See RSS 1.0 § 5.6.3 </a>
+The text input field's (variable) name.
 </div>
 </td></tr>
 <tr><td align="left"><br>P</td></tr>
@@ -171,7 +202,8 @@
 <tr><td align="left"><br>R</td></tr>
 <tr><td><a href="Syndic_rss1.html#TYPErdf">rdf</a> [<a href="Syndic_rss1.html">Syndic_rss1</a>]</td>
 <td><div class="info">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.2"> See RSS 1.0 § 5.2 </a>
+The outermost level in every RSS 1.0 compliant document is the RDF
+    element.
 </div>
 </td></tr>
 <tr><td><a href="Syndic_atom.html#TYPErel">rel</a> [<a href="Syndic_atom.html">Syndic_atom</a>]</td>
@@ -217,7 +249,8 @@
 </td></tr>
 <tr><td><a href="Syndic_rss1.html#TYPEtextinput">textinput</a> [<a href="Syndic_rss1.html">Syndic_rss1</a>]</td>
 <td><div class="info">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.6"> See RSS 1.0 § 5.6 </a>
+The textinput element affords a method for submitting form data to
+    an arbitrary URL — usually located at the parent website.
 </div>
 </td></tr>
 <tr><td><a href="Syndic_atom.html#TYPEtitle">title</a> [<a href="Syndic_atom.html">Syndic_atom</a>]</td>
@@ -227,7 +260,7 @@
 </td></tr>
 <tr><td><a href="Syndic_rss1.html#TYPEtitle">title</a> [<a href="Syndic_rss1.html">Syndic_rss1</a>]</td>
 <td><div class="info">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.3.1"> See RSS 1.0 § 5.3.1 </a>
+A descriptive title for the channel, image, item and textinput.
 </div>
 </td></tr>
 <tr><td><a href="Syndic_atom.html#TYPEtype_content">type_content</a> [<a href="Syndic_atom.html">Syndic_atom</a>]</td>
@@ -243,7 +276,8 @@
 </td></tr>
 <tr><td><a href="Syndic_rss1.html#TYPEurl">url</a> [<a href="Syndic_rss1.html">Syndic_rss1</a>]</td>
 <td><div class="info">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.4.2"> See RSS 1.0 § 5.4.2 </a>
+The URL of the image to used in the "src" attribute of the
+    channel's image tag when rendered as HTML.
 </div>
 </td></tr>
 </table>

@@ -34,19 +34,12 @@
 <pre><span class="keyword">module</span> <a href="Syndic_rss1.Error.html">Error</a>: <code class="type"><a href="Syndic_error.T.html">Syndic_error.T</a></code><code class="type"> </code></pre>
 <pre><span id="TYPEtitle"><span class="keyword">type</span> <code class="type"></code>title</span> = <code class="type">string</code> </pre>
 <div class="info ">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.3.1"> See RSS 1.0 § 5.3.1 </a>
-<p>
-
-<a href=" http://web.resource.org/rss/1.0/spec#s5.4.1"> See RSS 1.0 § 5.4.1 </a>
-<p>
-
-<a href=" http://web.resource.org/rss/1.0/spec#s5.5.1"> See RSS 1.0 § 5.5.1 </a>
-<p>
-
-<a href=" http://web.resource.org/rss/1.0/spec#s5.6.1"> See RSS 1.0 § 5.6.1 </a>
-<p>
-
 A descriptive title for the channel, image, item and textinput.
+    See RSS 1.0
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.3.1"> § 5.3.1</a>,
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.4.1"> § 5.4.1</a>,
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.5.1"> § 5.5.1</a>, and
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.6.1"> § 5.6.1</a>.
 <p>
 
 <pre class="codepre"><code class="code"><span class="constructor">Syntax</span>:&nbsp;&lt;title&gt;{title}&lt;/title&gt;<br>
@@ -60,10 +53,8 @@ A descriptive title for the channel, image, item and textinput.
 
 <pre><span id="TYPEname"><span class="keyword">type</span> <code class="type"></code>name</span> = <code class="type">string</code> </pre>
 <div class="info ">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.6.3"> See RSS 1.0 § 5.6.3 </a>
-<p>
-
 The text input field's (variable) name.
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.6.3"> See RSS 1.0 § 5.6.3</a>.
 <p>
 
 <pre class="codepre"><code class="code"><span class="constructor">Syntax</span>:&nbsp;&lt;name&gt;{textinput_varname}&lt;/name&gt;<br>
@@ -76,24 +67,16 @@ The text input field's (variable) name.
 
 <pre><span id="TYPEdescription"><span class="keyword">type</span> <code class="type"></code>description</span> = <code class="type">string</code> </pre>
 <div class="info ">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.3.3"> See RSS 1.0 § 5.3.3 </a>
-<p>
-
-<a href=" http://web.resource.org/rss/1.0/spec#s5.5.3"> See RSS 1.0 § 5.5.3 </a>
-<p>
-
-<a href=" http://web.resource.org/rss/1.0/spec#s5.6.2"> See RSS 1.0 § 5.6.2 </a>
-<p>
-
-A brief description of the channel's content, function, source, etc.
-<p>
-
-Or a brief description/abstract of the item.
-<p>
-
-Or a brief description of the textinput field's purpose. For example: "Subscribe
-to our newsletter for..." or "Search our site's archive of..."
-<p>
+This can be<ul>
+<li>a brief description of the channel's content, function, source, etc.
+      <a href=" http://web.resource.org/rss/1.0/spec#s5.3.3"> See RSS 1.0 § 5.3.3</a>;</li>
+<li>or a brief description/abstract of the item.
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.5.3"> See RSS 1.0 § 5.5.3</a>;</li>
+<li>or a brief description of the textinput field's purpose. For
+    example: "Subscribe to our newsletter for..." or "Search our site's
+    archive of..."
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.6.2"> See RSS 1.0 § 5.6.2</a>.</li>
+</ul>
 
 <pre class="codepre"><code class="code"><span class="constructor">Syntax</span>:&nbsp;&lt;description&gt;{description}&lt;/description&gt;<br>
 <span class="constructor">Requirement</span>:&nbsp;<span class="constructor">Required</span>&nbsp;only&nbsp;<span class="keyword">for</span>&nbsp;channel&nbsp;<span class="keyword">and</span>&nbsp;textinput<br>
@@ -106,12 +89,10 @@ to our newsletter for..." or "Search our site's archive of..."
 
 <pre><span id="TYPEchannel_image"><span class="keyword">type</span> <code class="type"></code>channel_image</span> = <code class="type">Uri.t</code> </pre>
 <div class="info ">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.3.4"> See RSS 1.0 § 5.3.4 </a>
-<p>
-
-Establishes an RDF association between the optional image element <code class="code">5.4</code> and this
-particular RSS channel.  The rdf:resource's   must be the same as the
-image element's rdf:about .
+Establishes an RDF association between the optional image element
+    <code class="code">5.4</code> and this particular RSS channel.  The rdf:resource's 
+    must be the same as the image element's rdf:about .
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.3.4"> See RSS 1.0 § 5.3.4</a>
 <p>
 
 <pre class="codepre"><code class="code"><span class="constructor">Syntax</span>:&nbsp;&lt;image&nbsp;rdf:resource=<span class="string">"{image_uri}"</span>&nbsp;/&gt;<br>
@@ -123,11 +104,9 @@ image element's rdf:about .
 
 <pre><span id="TYPEurl"><span class="keyword">type</span> <code class="type"></code>url</span> = <code class="type">Uri.t</code> </pre>
 <div class="info ">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.4.2"> See RSS 1.0 § 5.4.2 </a>
-<p>
-
-The URL of the  image to used in the "src" attribute  of the channel's image tag
-when rendered as HTML.
+The URL of the image to used in the "src" attribute of the
+    channel's image tag when rendered as HTML.
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.4.2"> See RSS 1.0 § 5.4.2</a>
 <p>
 
 <pre class="codepre"><code class="code"><span class="constructor">Syntax</span>:&nbsp;&lt;url&gt;{image_url}&lt;/url&gt;<br>
@@ -140,31 +119,19 @@ when rendered as HTML.
 
 <pre><span id="TYPElink"><span class="keyword">type</span> <code class="type"></code>link</span> = <code class="type">Uri.t</code> </pre>
 <div class="info ">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.3.2"> See RSS 1.0 § 5.3.2 </a>
-<p>
-
-<a href=" http://web.resource.org/rss/1.0/spec#s5.4.3"> See RSS 1.0 § 5.4.3 </a>
-<p>
-
-<a href=" http://web.resource.org/rss/1.0/spec#s5.5.2"> See RSS 1.0 § 5.5.2 </a>
-<p>
-
-<a href=" http://web.resource.org/rss/1.0/spec#s5.6.4"> See RSS 1.0 § 5.6.4 </a>
-<p>
-
-The URL to which an HTML rendering of the channel title will link,  commonly the
-parent site's home or news page.
-<p>
-
-Or the URL to which an HTML rendering of the channel image will link.  This,  as
-with the channel's title link, is commonly the parent site's home or news page.
-<p>
-
-Or the item's URL.
-<p>
-
-Or the URL to which a textinput submission will be directed (using GET).
-<p>
+This can be<ul>
+<li>The URL to which an HTML rendering of the channel title will link,
+    commonly the parent site's home or news page.
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.3.2"> See RSS 1.0 § 5.3.2</a></li>
+<li>Or the URL to which an HTML rendering of the channel image will
+    link.  This, as with the channel's title link, is commonly the
+    parent site's home or news page.
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.4.3"> See RSS 1.0 § 5.4.3</a></li>
+<li>Or the item's URL.
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.5.2"> See RSS 1.0 § 5.5.2</a></li>
+<li>Or the URL to which a textinput submission will be directed (using GET).
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.6.4"> See RSS 1.0 § 5.6.4</a></li>
+</ul>
 
 <pre class="codepre"><code class="code"><span class="constructor">Syntax</span>:&nbsp;&lt;link&gt;{link}&lt;/link&gt;<br>
 <span class="constructor">Requirement</span>:&nbsp;<span class="constructor">Required</span>&nbsp;<span class="keyword">for</span>&nbsp;all<br>
@@ -182,20 +149,22 @@ Or the URL to which a textinput submission will be directed (using GET).
 
 <pre><span id="TYPEitems"><span class="keyword">type</span> <code class="type"></code>items</span> = <code class="type"><a href="Syndic_rss1.html#TYPEseq">seq</a></code> </pre>
 <div class="info ">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.3.5"> See RSS 1.0 § 5.3.5 </a>
+An RDF table of contents, associating the document's items <code class="code">5.5</code>
+    with this particular RSS channel.  Each item's rdf:resource
+     must be the same as the associated item element's
+    rdf:about .
 <p>
 
-An  RDF table  of contents,  associating  the document's  items <code class="code">5.5</code>  with this
-particular RSS channel.  Each item's rdf:resource  must be the same as
-the associated item element's rdf:about .
+    An RDF Seq (sequence) is used to contain all the items rather than
+    an RDF Bag to denote item order for rendering and reconstruction.
 <p>
 
-An RDF Seq (sequence) is used to contain all the items rather than an RDF Bag to
-denote item order for rendering and reconstruction.
+    Note that items appearing in the document but not as members of
+    the channel level items sequence are likely to be discarded by RDF
+    parsers.
 <p>
 
-Note that  items appearing in  the document but  not as  members of  the channel
-level items sequence are likely to be discarded by RDF parsers.
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.3.5"> See RSS 1.0 § 5.3.5</a>
 <p>
 
 <pre class="codepre"><code class="code"><span class="constructor">Syntax</span>:&nbsp;&lt;items&gt;&lt;rdf:<span class="constructor">Seq</span>&gt;&lt;rdf:li&nbsp;resource=<span class="string">"{item_uri}"</span>&nbsp;/&gt;&nbsp;...&nbsp;&lt;/rdf:<span class="constructor">Seq</span>&gt;&lt;/items&gt;<br>
@@ -206,12 +175,13 @@ level items sequence are likely to be discarded by RDF parsers.
 
 <pre><span id="TYPEchannel_textinput"><span class="keyword">type</span> <code class="type"></code>channel_textinput</span> = <code class="type">Uri.t</code> </pre>
 <div class="info ">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.3.6"> See RSS 1.0 § 5.3.6 </a>
+Establishes an RDF association between the optional textinput
+    element <code class="code">5.6</code> and this particular RSS channel.  The
+     rdf:resource must be the same as the textinput
+    element's rdf:about .
 <p>
 
-Establishes an RDF association between  the optional textinput element <code class="code">5.6</code> and
-this particular RSS channel.  The   rdf:resource must be the same
-as the textinput element's rdf:about .
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.3.6"> See RSS 1.0 § 5.3.6</a>
 <p>
 
 <pre class="codepre"><code class="code"><span class="constructor">Syntax</span>:&nbsp;&lt;textinput&nbsp;rdf:resource=<span class="string">"{textinput_uri}"</span>&nbsp;/&gt;<br>
@@ -227,7 +197,7 @@ as the textinput element's rdf:about .
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTchannel.about">about</span>&nbsp;: <code class="type">Uri.t</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >must be uniq</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >must be unique</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
@@ -274,16 +244,18 @@ as the textinput element's rdf:about .
 }
 
 <div class="info ">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.3"> See RSS 1.0 § 5.3 </a>
+The channel element contains metadata describing the channel
+    itself, including a title, brief description, and URL link to the
+    described resource (the channel provider's home page, for
+    instance).  The {resource} URL of the channel element's
+    rdf:about attribute must be unique with respect to any other
+    rdf:about attributes in the RSS document and is a URI which
+    identifies the channel.  Most commonly, this is either the URL of
+    the homepage being described or a URL where the RSS file can be
+    found.
 <p>
 
-The channel element contains metadata describing the channel itself, including a
-title,  brief description,  and URL link to  the described resource (the channel
-provider's  home  page,  for instance).  The  {resource}  URL  of  the channel
-element's rdf:about attribute must be unique with respect to any other rdf:about
-attributes in the RSS document and  is a URI which identifies the channel.  Most
-commonly,  this is either the URL of the homepage being described or a URL where
-the RSS file can be found.
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.3"> See RSS 1.0 § 5.3</a>
 <p>
 
 <pre class="codepre"><code class="code"><span class="constructor">Syntax</span>:&nbsp;&lt;channel&nbsp;rdf:about=<span class="string">"{resource}"</span>&gt;<br>
@@ -326,13 +298,14 @@ the RSS file can be found.
 }
 
 <div class="info ">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.4"> See RSS 1.0 § 5.4 </a>
+An image to be associated with an HTML rendering of the channel.
+    This image should be of a format supported by the majority of Web
+    browsers. While the later 0.91 specification allowed for a width
+    of 1–144 and height of 1–400, convention (and the 0.9
+    specification) dictate 88×31.
 <p>
 
-An image  to be associated  with an HTML  rendering of the  channel.  This image
-should be of a format supported by the majority of Web browsers. While the later
-0.91 specification allowed for a width of 1-144 and height of 1-400,  convention
-(and the 0.9 specification) dictate 88x31.
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.4"> See RSS 1.0 § 5.4</a>
 <p>
 
 <pre class="codepre"><code class="code"><span class="constructor">Syntax</span>:&nbsp;&lt;image&nbsp;rdf:about=<span class="string">"{image_uri}"</span>&gt;<br>
@@ -375,20 +348,21 @@ should be of a format supported by the majority of Web browsers. While the later
 }
 
 <div class="info ">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.5"> See RSS 1.0 § 5.5 </a>
+While commonly a news headline, with RSS 1.0's modular
+    extensibility, this can be just about anything: discussion
+    posting, job listing, software patch -- any object with a URI.
+    There may be a minimum of one item per RSS document.  While RSS
+    1.0 does not enforce an upper limit, for backward compatibility
+    with RSS 0.9 and 0.91, a maximum of fifteen items is recommended.
 <p>
 
-While commonly a news headline,  with RSS 1.0's modular extensibility,  this can
-be just about anything:  discussion posting,  job listing, software patch -- any
-object with a URI.  There may be a  minimum of one item per RSS document.  While
-RSS 1.0 does not enforce an upper limit, for backward compatibility with RSS 0.9
-and 0.91, a maximum of fifteen items is recommended.
+    <code class="code">about</code> must be unique with respect to any other rdf:about
+    attributes in the RSS document and is a URI which identifies the
+    item.  The value of <code class="code">about</code> should be identical to the value of
+    the <code class="code">link</code>, if possible.
 <p>
 
-{item_uri} must  be unique with respect  to any other  rdf:about attributes in
-the RSS document  and is a URI which identifies  the item.   should be
-identical to  the value  of the  &lt;link&gt; sub-element  of the  &lt;item&gt; element,  if
-possible.
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.5"> See RSS 1.0 § 5.5</a>
 <p>
 
 <pre class="codepre"><code class="code"><span class="constructor">Syntax</span>:&nbsp;&lt;item&nbsp;rdf:about=<span class="string">"{item_uri}"</span>&gt;<br>
@@ -439,27 +413,30 @@ possible.
 }
 
 <div class="info ">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.6"> See RSS 1.0 § 5.6 </a>
+The textinput element affords a method for submitting form data to
+    an arbitrary URL — usually located at the parent website.  The
+    form processor at the receiving end only is assumed to handle the
+    HTTP GET method.
 <p>
 
-The textinput element affords a method  for submitting form data to an arbitrary
-URL  -- usually  located at  the  parent  website.  The  form  processor  at the
-receiving end only is assumed to handle the HTTP GET method.
+    The field is typically used as a search box or subscription form
+    — among others.  While this is of some use when RSS documents are
+    rendered as channels (see MNN) and accompanied by human readable
+    title and description, the ambiguity in automatic determination of
+    meaning of this overloaded element renders it otherwise not
+    particularly useful. RSS 1.0 therefore suggests either deprecation
+    or augmentation with some form of resource discovery of this
+    element in future versions while maintaining it for backward
+    compatiblity with RSS 0.9.
 <p>
 
-The field is typically  used  as  a  search  box  or  subscription form -- among
-others.  While this is  of some use when RSS documents  are rendered as channels
-(see MNN) and accompanied by human readable title and description, the ambiguity
-in  automatic determination  of meaning  of this  overloaded element  renders it
-otherwise not particularly useful. RSS 1.0 therefore suggests either deprecation
-or augmentation with  some form of resource discovery of  this element in future
-versions while maintaining it for backward compatiblity with RSS 0.9.
+    <code class="code">about</code> must be unique with respect to any other rdf:about
+    attributes in the RSS document and is a URI which identifies the
+    textinput.  <code class="code">about</code> should be identical to the value of the
+    <code class="code">link</code>, if possible.
 <p>
 
-{textinput_uri} must be unique with  respect to any other rdf:about attributes
-in  the   RSS  document   and  is   a  URI   which  identifies   the  textinput.
-{textinput_uri} should be identical to the  value of the &lt;link&gt; sub-element of
-the &lt;textinput&gt; element, if possible.
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.6"> See RSS 1.0 § 5.6 </a>
 <p>
 
 <pre class="codepre"><code class="code"><span class="constructor">Syntax</span>:&nbsp;&lt;textinput&nbsp;rdf:about=<span class="string">"{textinput_uri}"</span>&gt;<br>
@@ -502,17 +479,18 @@ the &lt;textinput&gt; element, if possible.
 }
 
 <div class="info ">
-<a href=" http://web.resource.org/rss/1.0/spec#s5.2"> See RSS 1.0 § 5.2 </a>
+The outermost level in every RSS 1.0 compliant document is the RDF
+    element.  The opening RDF tag assocaties the rdf: namespace prefix
+    with the RDF syntax schema and establishes the RSS 1.0 schema as
+    the default namespace for the document.
 <p>
 
-The outermost level in every RSS 1.0 compliant document is the RDF element.  The
-opening RDF tag assocaties the rdf:  namespace prefix with the RDF syntax schema
-and establishes the RSS 1.0 schema as the default namespace for the document.
+    While any valid namespace prefix may be used, document creators
+    are advised to consider "rdf:" normative. Those wishing to be
+    strictly backward-compatible with RSS 0.9 must use "rdf:".
 <p>
 
-While any valid namespace prefix may  be used,  document creators are advised to
-consider "rdf:" normative. Those wishing to be strictly backward-compatible with
-RSS 0.9 must use "rdf:".
+    <a href=" http://web.resource.org/rss/1.0/spec#s5.2"> See RSS 1.0 § 5.2</a>
 <p>
 
 <pre class="codepre"><code class="code"><span class="constructor">Syntax</span>:&nbsp;&lt;rdf:<span class="constructor">RDF</span>&nbsp;xmlns:rdf=<span class="string">"http://www.w3.org/1999/02/22-rdf-syntax-ns#"</span>&nbsp;xmlns=<span class="string">"http://purl.org/rss/1.0/"</span>&gt;<br>
@@ -522,8 +500,9 @@ RSS 0.9 must use "rdf:".
 </div>
 
 
-<pre><span id="VALanalyze"><span class="keyword">val</span> analyze</span> : <code class="type">Xmlm.input -> <a href="Syndic_rss1.html#TYPErdf">rdf</a></code></pre>
-<pre><span id="VALunsafe"><span class="keyword">val</span> unsafe</span> : <code class="type">Xmlm.input -><br>       [> `RDF of<br>            [> `Channel of<br>                 [> `About of string<br>                  | `Description of [> `Data of string ] list<br>                  | `Image of [> `URI of string ] list<br>                  | `Items of<br>                      [> `Seq of [> `Li of [> `URI of string ] list ] list ] list<br>                  | `Link of [> `URI of string ] list<br>                  | `TextInput of [> `URI of string ] list<br>                  | `Title of [> `Data of string ] list ]<br>                 list<br>             | `Image of<br>                 [> `About of string<br>                  | `Link of [> `URI of string ] list<br>                  | `Title of [> `Data of string ] list<br>                  | `URL of [> `URI of string ] list ]<br>                 list<br>             | `Item of<br>                 [> `About of string<br>                  | `Description of [> `Data of string ] list<br>                  | `Link of [> `URI of string ] list<br>                  | `Title of [> `Data of string ] list ]<br>                 list<br>             | `TextInput of<br>                 [> `About of string<br>                  | `Description of [> `Data of string ] list<br>                  | `Link of [> `URI of string ] list<br>                  | `Name of [> `Data of string ] list<br>                  | `Title of [> `Data of string ] list ]<br>                 list ]<br>            list ]</code></pre><div class="info ">
-Analysis without verification, enjoy !<br>
+<pre><span id="VALanalyze"><span class="keyword">val</span> analyze</span> : <code class="type">Xmlm.input -> <a href="Syndic_rss1.html#TYPErdf">rdf</a></code></pre><div class="info ">
+<code class="code">analyze xml</code> parse <code class="code">xml</code>.<br>
+<b>Raises</b> <code>Error.raise_expectation</code> if <code class="code">xml</code> is not a valid RSS1
+    document.<br>
 </div>
 </body></html>
