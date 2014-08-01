@@ -11,25 +11,12 @@
 <link title="Syndic_rss1" rel="Chapter" href="Syndic_rss1.html">
 <link title="Syndic_rss2" rel="Chapter" href="Syndic_rss2.html">
 <link title="Syndic_atom" rel="Chapter" href="Syndic_atom.html">
-<link title="Syndic_error" rel="Chapter" href="Syndic_error.html"><title>Syndic.Rss2</title>
+<link title="Syndic_error" rel="Chapter" href="Syndic_error.html"><title>Syndic_rss2</title>
 </head>
 <body>
 <code class="code"><span class="keyword">sig</span><br>
-&nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">Error</span>&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;expected_type&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Syndic_rss2</span>.<span class="constructor">Error</span>.expected_type&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Attr</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Tag</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Data</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Root</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">exception</span>&nbsp;<span class="constructor">Expected</span>&nbsp;<span class="keyword">of</span>&nbsp;expected_type&nbsp;*&nbsp;expected_type<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">exception</span>&nbsp;<span class="constructor">Expected_Leaf</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_expectation&nbsp;:&nbsp;expected_type&nbsp;*&nbsp;expected_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;raise_expectation&nbsp;:&nbsp;expected_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;expected_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;image&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Syndic_rss2</span>.image&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">Error</span>&nbsp;:&nbsp;<span class="constructor">Syndic_error</span>.<span class="constructor">T</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;image&nbsp;=&nbsp;{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;:&nbsp;<span class="constructor">Uri</span>.t;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;:&nbsp;string;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;:&nbsp;<span class="constructor">Uri</span>.t;<br>
@@ -37,53 +24,39 @@
 &nbsp;&nbsp;&nbsp;&nbsp;height&nbsp;:&nbsp;int;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;description&nbsp;:&nbsp;string&nbsp;option;<br>
 &nbsp;&nbsp;}<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;cloud&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Syndic_rss2</span>.cloud&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;cloud&nbsp;=&nbsp;{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;domain&nbsp;:&nbsp;<span class="constructor">Uri</span>.t;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;port&nbsp;:&nbsp;int;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;:&nbsp;string;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;registerProcedure&nbsp;:&nbsp;string;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;protocol&nbsp;:&nbsp;string;<br>
 &nbsp;&nbsp;}<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;textinput&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Syndic_rss2</span>.textinput&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;textinput&nbsp;=&nbsp;{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;:&nbsp;string;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;description&nbsp;:&nbsp;string;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;:&nbsp;string;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;:&nbsp;<span class="constructor">Uri</span>.t;<br>
 &nbsp;&nbsp;}<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;category&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Syndic_rss2</span>.category&nbsp;=&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;:&nbsp;string;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;domain&nbsp;:&nbsp;<span class="constructor">Uri</span>.t&nbsp;option;<br>
-&nbsp;&nbsp;}<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;enclosure&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Syndic_rss2</span>.enclosure&nbsp;=&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;:&nbsp;<span class="constructor">Uri</span>.t;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;length&nbsp;:&nbsp;int;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;mime&nbsp;:&nbsp;string;<br>
-&nbsp;&nbsp;}<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;guid&nbsp;=&nbsp;<span class="constructor">Syndic_rss2</span>.guid&nbsp;=&nbsp;{&nbsp;data&nbsp;:&nbsp;<span class="constructor">Uri</span>.t;&nbsp;permalink&nbsp;:&nbsp;bool;&nbsp;}<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;source&nbsp;=&nbsp;<span class="constructor">Syndic_rss2</span>.source&nbsp;=&nbsp;{&nbsp;data&nbsp;:&nbsp;string;&nbsp;url&nbsp;:&nbsp;<span class="constructor">Uri</span>.t;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;category&nbsp;=&nbsp;{&nbsp;data&nbsp;:&nbsp;string;&nbsp;domain&nbsp;:&nbsp;<span class="constructor">Uri</span>.t&nbsp;option;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;enclosure&nbsp;=&nbsp;{&nbsp;url&nbsp;:&nbsp;<span class="constructor">Uri</span>.t;&nbsp;length&nbsp;:&nbsp;int;&nbsp;mime&nbsp;:&nbsp;string;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;guid&nbsp;=&nbsp;{&nbsp;data&nbsp;:&nbsp;<span class="constructor">Uri</span>.t;&nbsp;permalink&nbsp;:&nbsp;bool;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;source&nbsp;=&nbsp;{&nbsp;data&nbsp;:&nbsp;string;&nbsp;url&nbsp;:&nbsp;<span class="constructor">Uri</span>.t;&nbsp;}<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;story&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Syndic_rss2</span>.story&nbsp;=<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">All</span>&nbsp;<span class="keyword">of</span>&nbsp;string&nbsp;*&nbsp;string<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Title</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Description</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;item&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Syndic_rss2</span>.item&nbsp;=&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;story&nbsp;:&nbsp;story;<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;item&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;story&nbsp;:&nbsp;<span class="constructor">Syndic_rss2</span>.story;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;:&nbsp;<span class="constructor">Uri</span>.t&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;author&nbsp;:&nbsp;string&nbsp;option;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;category&nbsp;:&nbsp;category&nbsp;option;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;category&nbsp;:&nbsp;<span class="constructor">Syndic_rss2</span>.category&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;comments&nbsp;:&nbsp;<span class="constructor">Uri</span>.t&nbsp;option;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;enclosure&nbsp;:&nbsp;enclosure&nbsp;option;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;guid&nbsp;:&nbsp;guid&nbsp;option;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;enclosure&nbsp;:&nbsp;<span class="constructor">Syndic_rss2</span>.enclosure&nbsp;option;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;guid&nbsp;:&nbsp;<span class="constructor">Syndic_rss2</span>.guid&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;pubDate&nbsp;:&nbsp;<span class="constructor">Netdate</span>.t&nbsp;option;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;source&nbsp;:&nbsp;source&nbsp;option;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;source&nbsp;:&nbsp;<span class="constructor">Syndic_rss2</span>.source&nbsp;option;<br>
 &nbsp;&nbsp;}<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;channel&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Syndic_rss2</span>.channel&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;channel&nbsp;=&nbsp;{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;:&nbsp;string;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;:&nbsp;<span class="constructor">Uri</span>.t;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;description&nbsp;:&nbsp;string;<br>
@@ -96,16 +69,16 @@
 &nbsp;&nbsp;&nbsp;&nbsp;category&nbsp;:&nbsp;string&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;generator&nbsp;:&nbsp;string&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;docs&nbsp;:&nbsp;<span class="constructor">Uri</span>.t&nbsp;option;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;cloud&nbsp;:&nbsp;cloud&nbsp;option;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cloud&nbsp;:&nbsp;<span class="constructor">Syndic_rss2</span>.cloud&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;ttl&nbsp;:&nbsp;int&nbsp;option;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;image&nbsp;:&nbsp;image&nbsp;option;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;image&nbsp;:&nbsp;<span class="constructor">Syndic_rss2</span>.image&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;rating&nbsp;:&nbsp;int&nbsp;option;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;textInput&nbsp;:&nbsp;textinput&nbsp;option;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;textInput&nbsp;:&nbsp;<span class="constructor">Syndic_rss2</span>.textinput&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;skipHours&nbsp;:&nbsp;int&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;skipDays&nbsp;:&nbsp;int&nbsp;option;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;items&nbsp;:&nbsp;item&nbsp;list;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;items&nbsp;:&nbsp;<span class="constructor">Syndic_rss2</span>.item&nbsp;list;<br>
 &nbsp;&nbsp;}<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;analyze&nbsp;:&nbsp;<span class="constructor">Xmlm</span>.input&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;channel<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;analyze&nbsp;:&nbsp;<span class="constructor">Xmlm</span>.input&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Syndic_rss2</span>.channel<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;unsafe&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Xmlm</span>.input&nbsp;<span class="keywordsign">-&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;[&gt;&nbsp;<span class="keywordsign">`</span><span class="constructor">Channel</span>&nbsp;<span class="keyword">of</span><br>

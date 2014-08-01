@@ -11,23 +11,11 @@
 <link title="Syndic_rss1" rel="Chapter" href="Syndic_rss1.html">
 <link title="Syndic_rss2" rel="Chapter" href="Syndic_rss2.html">
 <link title="Syndic_atom" rel="Chapter" href="Syndic_atom.html">
-<link title="Syndic_error" rel="Chapter" href="Syndic_error.html"><title>Syndic.Rss1</title>
+<link title="Syndic_error" rel="Chapter" href="Syndic_error.html"><title>Syndic_rss1</title>
 </head>
 <body>
 <code class="code"><span class="keyword">sig</span><br>
-&nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">Error</span>&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;expected_type&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Syndic_rss1</span>.<span class="constructor">Error</span>.expected_type&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Attr</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Tag</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Data</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Root</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">exception</span>&nbsp;<span class="constructor">Expected</span>&nbsp;<span class="keyword">of</span>&nbsp;expected_type&nbsp;*&nbsp;expected_type<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">exception</span>&nbsp;<span class="constructor">Expected_Leaf</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_expectation&nbsp;:&nbsp;expected_type&nbsp;*&nbsp;expected_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;raise_expectation&nbsp;:&nbsp;expected_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;expected_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
+&nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">Error</span>&nbsp;:&nbsp;<span class="constructor">Syndic_error</span>.<span class="constructor">T</span><br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;title&nbsp;=&nbsp;string<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;name&nbsp;=&nbsp;string<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;description&nbsp;=&nbsp;string<br>
@@ -35,49 +23,44 @@
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;url&nbsp;=&nbsp;<span class="constructor">Uri</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;link&nbsp;=&nbsp;<span class="constructor">Uri</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;li&nbsp;=&nbsp;<span class="constructor">Uri</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;seq&nbsp;=&nbsp;li&nbsp;list<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;items&nbsp;=&nbsp;seq<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;seq&nbsp;=&nbsp;<span class="constructor">Syndic_rss1</span>.li&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;items&nbsp;=&nbsp;<span class="constructor">Syndic_rss1</span>.seq<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;channel_textinput&nbsp;=&nbsp;<span class="constructor">Uri</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;channel&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Syndic_rss1</span>.channel&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;channel&nbsp;=&nbsp;{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;:&nbsp;<span class="constructor">Uri</span>.t;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;:&nbsp;title;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;:&nbsp;link;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;description&nbsp;:&nbsp;description;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;image&nbsp;:&nbsp;channel_image&nbsp;option;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;items&nbsp;:&nbsp;items;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;textinput&nbsp;:&nbsp;channel_textinput&nbsp;option;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.title;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.link;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;description&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.description;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;image&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.channel_image&nbsp;option;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;items&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.items;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;textinput&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.channel_textinput&nbsp;option;<br>
 &nbsp;&nbsp;}<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;image&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Syndic_rss1</span>.image&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;image&nbsp;=&nbsp;{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;:&nbsp;<span class="constructor">Uri</span>.t;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;:&nbsp;title;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;:&nbsp;url;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;:&nbsp;link;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.title;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.url;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.link;<br>
 &nbsp;&nbsp;}<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;item&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Syndic_rss1</span>.item&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;item&nbsp;=&nbsp;{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;:&nbsp;<span class="constructor">Uri</span>.t;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;:&nbsp;title;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;:&nbsp;link;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;description&nbsp;:&nbsp;description&nbsp;option;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.title;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.link;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;description&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.description&nbsp;option;<br>
 &nbsp;&nbsp;}<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;textinput&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Syndic_rss1</span>.textinput&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;textinput&nbsp;=&nbsp;{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;about&nbsp;:&nbsp;<span class="constructor">Uri</span>.t;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;:&nbsp;title;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;description&nbsp;:&nbsp;description;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;:&nbsp;name;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;:&nbsp;link;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.title;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;description&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.description;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.name;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.link;<br>
 &nbsp;&nbsp;}<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;rdf&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Syndic_rss1</span>.rdf&nbsp;=&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;channel&nbsp;:&nbsp;channel;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;image&nbsp;:&nbsp;image&nbsp;option;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;item&nbsp;:&nbsp;item&nbsp;list;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;textinput&nbsp;:&nbsp;textinput&nbsp;option;<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;rdf&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;channel&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.channel;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;image&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.image&nbsp;option;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;item&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.item&nbsp;list;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;textinput&nbsp;:&nbsp;<span class="constructor">Syndic_rss1</span>.textinput&nbsp;option;<br>
 &nbsp;&nbsp;}<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;analyze&nbsp;:&nbsp;<span class="constructor">Xmlm</span>.input&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;rdf<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;analyze&nbsp;:&nbsp;<span class="constructor">Xmlm</span>.input&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Syndic_rss1</span>.rdf<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;unsafe&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Xmlm</span>.input&nbsp;<span class="keywordsign">-&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;[&gt;&nbsp;<span class="keywordsign">`</span><span class="constructor">RDF</span>&nbsp;<span class="keyword">of</span><br>

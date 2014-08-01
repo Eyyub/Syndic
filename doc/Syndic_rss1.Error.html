@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="Up" href="Syndic_rss1.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Syndic" rel="Chapter" href="Syndic.html">
+<link title="Syndic_rss1" rel="Chapter" href="Syndic_rss1.html">
+<link title="Syndic_rss2" rel="Chapter" href="Syndic_rss2.html">
+<link title="Syndic_atom" rel="Chapter" href="Syndic_atom.html">
+<link title="Syndic_error" rel="Chapter" href="Syndic_error.html"><title>Syndic_rss1.Error</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="Syndic_rss1.html" title="Syndic_rss1">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Syndic_rss1.Error.html">Syndic_rss1.Error</a></h1>
+
+<pre><span class="keyword">module</span> Error: <code class="type"><a href="Syndic_error.T.html">Syndic_error.T</a></code><code class="type"> </code></pre><hr width="100%">
+
+<pre><code><span id="TYPEexpected_type"><span class="keyword">type</span> <code class="type"></code>expected_type</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTexpected_type.Attr"><span class="constructor">Attr</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTexpected_type.Tag"><span class="constructor">Tag</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTexpected_type.Data"><span class="constructor">Data</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTexpected_type.Root"><span class="constructor">Root</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="EXCEPTIONExpected"><span class="keyword">exception</span> Expected</span> <span class="keyword">of</span> <code class="type"><a href="Syndic_error.T.html#TYPEexpected_type">expected_type</a> * <a href="Syndic_error.T.html#TYPEexpected_type">expected_type</a></code></pre>
+
+<pre><span id="EXCEPTIONExpected_Leaf"><span class="keyword">exception</span> Expected_Leaf</span></pre>
+
+<pre><span id="VALstring_of_expectation"><span class="keyword">val</span> string_of_expectation</span> : <code class="type"><a href="Syndic_error.T.html#TYPEexpected_type">expected_type</a> * <a href="Syndic_error.T.html#TYPEexpected_type">expected_type</a> -> string</code></pre>
+<pre><span id="VALraise_expectation"><span class="keyword">val</span> raise_expectation</span> : <code class="type"><a href="Syndic_error.T.html#TYPEexpected_type">expected_type</a> -> <a href="Syndic_error.T.html#TYPEexpected_type">expected_type</a> -> 'a</code></pre></body></html>
