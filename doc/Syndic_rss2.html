@@ -713,8 +713,10 @@ Here's a list of the required channel elements, each with a brief
 
 
 <pre><span id="VALanalyze"><span class="keyword">val</span> analyze</span> : <code class="type">Xmlm.input -> <a href="Syndic_rss2.html#TYPEchannel">channel</a></code></pre><div class="info ">
-<code class="code">analyze xml</code> parse <code class="code">xml</code>.<br>
-<b>Raises</b> <code>Error.raise_expectation</code> if <code class="code">xml</code> is not a valid RSS2
-    document.<br>
+<code class="code">analyze xml</code> parse <code class="code">xml</code>.
+<p>
+
+    Raise <code class="code"><span class="constructor">Error</span>.<span class="constructor">Expected</span></code>, <code class="code"><span class="constructor">Error</span>.<span class="constructor">Size_Exceeded</span></code> or
+    <code class="code"><span class="constructor">Error</span>.<span class="constructor">Item_expectation</span></code> if <code class="code">xml</code> is not a valid RSS2 document.<br>
 </div>
 </body></html>

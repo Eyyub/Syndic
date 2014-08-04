@@ -1113,8 +1113,10 @@ Text (<a href="Syndic_atom.html#TYPEcontent"><code class="code"><span class="con
 <pre><span id="VALanalyze"><span class="keyword">val</span> analyze</span> : <code class="type">Xmlm.input -> <a href="Syndic_atom.html#TYPEfeed">feed</a></code></pre><div class="info ">
 <code class="code">analyze xml</code> parse <code class="code">xml</code>.  Beware that <code class="code">xml</code> is mutable, so when
     the parsing fails, one have to create a new copy of <code class="code">xml</code> to use
-    it with another function.<br>
-<b>Raises</b> <code>Error.raise_expectation</code> if <code class="code">xml</code> is not a valid RSS2
-    document.<br>
+    it with another function.
+<p>
+
+    Raise <code class="code"><span class="constructor">Error</span>.<span class="constructor">Expected</span></code>, <code class="code"><span class="constructor">Expected_Leaf</span></code> or <code class="code"><span class="constructor">Error</span>.<span class="constructor">Duplicate_Link</span></code>
+    if <code class="code">xml</code> is not a valid Atom document.<br>
 </div>
 </body></html>
