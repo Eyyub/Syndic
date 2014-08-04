@@ -7,7 +7,6 @@
 <link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
-<link title="Index of module types" rel=Appendix href="index_module_types.html">
 <link title="Syndic" rel="Chapter" href="Syndic.html">
 <link title="Syndic_rss1" rel="Chapter" href="Syndic_rss1.html">
 <link title="Syndic_rss2" rel="Chapter" href="Syndic_rss2.html">
@@ -104,7 +103,7 @@ This can be a brief description of the channel's content, function, source, etc.
     metadata and data associated with the entry.
 </div>
 </td></tr>
-<tr><td><a href="Syndic_error.T.html#TYPEexpected_type">expected_type</a> [<a href="Syndic_error.T.html">Syndic_error.T</a>]</td>
+<tr><td><a href="Syndic_error.html#TYPEexpected">expected</a> [<a href="Syndic_error.html">Syndic_error</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>F</td></tr>
 <tr><td><a href="Syndic_atom.html#TYPEfeed">feed</a> [<a href="Syndic_atom.html">Syndic_atom</a>]</td>
@@ -235,8 +234,8 @@ The outermost level in every RSS 1.0 compliant document is the RDF
 <tr><td align="left"><br>S</td></tr>
 <tr><td><a href="Syndic_atom.html#TYPEsource">source</a> [<a href="Syndic_atom.html">Syndic_atom</a>]</td>
 <td><div class="info">
-If an atom:entry is copied from one feed into another feed, then
-    the source atom:feed's metadata (all child elements of atom:feed
+If an <a href="Syndic_atom.html#TYPEentry"><code class="code"><span class="constructor">Syndic_atom</span>.entry</code></a> is copied from one feed into another feed, then
+    the source <a href="Syndic_atom.html#TYPEfeed"><code class="code"><span class="constructor">Syndic_atom</span>.feed</code></a>'s metadata (all child elements of atom:feed
     other than the atom:entry elements) MAY be preserved within the
     copied entry by adding an atom:source child element, if it is not
     already present in the entry, and including some or all of the

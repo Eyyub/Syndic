@@ -11,7 +11,6 @@
 <link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
-<link title="Index of module types" rel=Appendix href="index_module_types.html">
 <link title="Syndic" rel="Chapter" href="Syndic.html">
 <link title="Syndic_rss1" rel="Chapter" href="Syndic_rss1.html">
 <link title="Syndic_rss2" rel="Chapter" href="Syndic_rss2.html">
@@ -619,8 +618,8 @@ The <code class="code">id</code> element conveys a permanent, universally unique
 }
 
 <div class="info ">
-If an atom:entry is copied from one feed into another feed, then
-    the source atom:feed's metadata (all child elements of atom:feed
+If an <a href="Syndic_atom.html#TYPEentry"><code class="code"><span class="constructor">Syndic_atom</span>.entry</code></a> is copied from one feed into another feed, then
+    the source <a href="Syndic_atom.html#TYPEfeed"><code class="code"><span class="constructor">Syndic_atom</span>.feed</code></a>'s metadata (all child elements of atom:feed
     other than the atom:entry elements) MAY be preserved within the
     copied entry by adding an atom:source child element, if it is not
     already present in the entry, and including some or all of the
@@ -639,8 +638,8 @@ If an atom:entry is copied from one feed into another feed, then
     entries from different feeds while retaining information about an
     entry's source feed.  For this reason, Atom Processors that are
     performing such aggregation SHOULD include at least the required
-    feed-level Metadata elements (atom:id, atom:title, and
-    atom:updated) in the atom:source element.
+    feed-level Metadata fields (<code class="code">id</code>, <code class="code">title</code>, and <code class="code">updated</code>) in the
+    <code class="code">source</code> element.
 <p>
 
     <a href=" http://tools.ietf.org/html/rfc4287#section-4.1.2">
@@ -915,18 +914,16 @@ Text (<a href="Syndic_atom.html#TYPEcontent"><code class="code"><span class="con
     Document.
 <p>
 
-    This specification assigns no significance to the order of
-    appearance of the child elements of atom:entry.
+    The specification mandates that each entry contains an author
+    unless it contains some sources or the feed contains an author
+    element.  This library ensures that the authors are properly
+    dispatched to all locations.
 <p>
 
     The following child elements are defined by this specification
     (note that it requires the presence of some of these elements):
 <p>
 <ul>
-<li><code class="code">entry</code> MUST contain one or more <code class="code">author</code>, unless the <code class="code">entry</code>
-      contains a <code class="code">sources</code> element that contains an <code class="code">author</code> or, in an
-      Atom Feed Document, the <a href="Syndic_atom.html#TYPEfeed"><code class="code"><span class="constructor">Syndic_atom</span>.feed</code></a> element contains an <code class="code">author</code>
-      element itself.</li>
 <li>if <code class="code">content = <span class="constructor">None</span></code>, then <code class="code">links</code> MUST contain at least one
       element with a rel attribute value of <code class="code"><span class="constructor">Alternate</span></code>.</li>
 <li>There MUST NOT be more than one element of <code class="code">links</code> with a rel
@@ -1120,7 +1117,9 @@ Text (<a href="Syndic_atom.html#TYPEcontent"><code class="code"><span class="con
 
 
 <pre><span id="VALanalyze"><span class="keyword">val</span> analyze</span> : <code class="type">Xmlm.input -> <a href="Syndic_atom.html#TYPEfeed">feed</a></code></pre><div class="info ">
-<code class="code">analyze xml</code> parse <code class="code">xml</code>.<br>
+<code class="code">analyze xml</code> parse <code class="code">xml</code>.  Beware that <code class="code">xml</code> is mutable, so when
+    the parsing fails, one have to create a new copy of <code class="code">xml</code> to use
+    it with another function.<br>
 <b>Raises</b> <code>Error.raise_expectation</code> if <code class="code">xml</code> is not a valid RSS2
     document.<br>
 </div>
