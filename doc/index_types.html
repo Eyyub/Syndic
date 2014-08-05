@@ -11,6 +11,7 @@
 <link title="Syndic_rss1" rel="Chapter" href="Syndic_rss1.html">
 <link title="Syndic_rss2" rel="Chapter" href="Syndic_rss2.html">
 <link title="Syndic_atom" rel="Chapter" href="Syndic_atom.html">
+<link title="Syndic_xml" rel="Chapter" href="Syndic_xml.html">
 <link title="Syndic_error" rel="Chapter" href="Syndic_error.html"><title>Index of types</title>
 </head>
 <body>
@@ -70,10 +71,7 @@ Establishes an RDF association between the optional textinput
 </div>
 </td></tr>
 <tr><td><a href="Syndic_atom.html#TYPEcontent">content</a> [<a href="Syndic_atom.html">Syndic_atom</a>]</td>
-<td><div class="info">
-<code class="code">content</code> either contains or links to the content of the entry.
-</div>
-</td></tr>
+<td></td></tr>
 <tr><td align="left"><br>D</td></tr>
 <tr><td><a href="Syndic_rss1.html#TYPEdescription">description</a> [<a href="Syndic_rss1.html">Syndic_rss1</a>]</td>
 <td><div class="info">
@@ -199,6 +197,13 @@ This can be The URL to which an HTML rendering of the channel title will link,
     provides visual identification for a feed.
 </div>
 </td></tr>
+<tr><td align="left"><br>M</td></tr>
+<tr><td><a href="Syndic_atom.html#TYPEmime">mime</a> [<a href="Syndic_atom.html">Syndic_atom</a>]</td>
+<td><div class="info">
+A MIME type that conform to the syntax of a MIME media type, but
+    MUST NOT be a composite type (see Section 4.2.6 of <code class="code"><span class="constructor">MIMEREG</span></code>).
+</div>
+</td></tr>
 <tr><td align="left"><br>N</td></tr>
 <tr><td><a href="Syndic_rss1.html#TYPEname">name</a> [<a href="Syndic_rss1.html">Syndic_rss1</a>]</td>
 <td><div class="info">
@@ -257,12 +262,10 @@ If an <a href="Syndic_atom.html#TYPEentry"><code class="code"><span class="const
 </div>
 </td></tr>
 <tr><td><a href="Syndic_atom.html#TYPEsummary">summary</a> [<a href="Syndic_atom.html">Syndic_atom</a>]</td>
-<td><div class="info">
-<code class="code">summary</code> is a Text construct that conveys a short summary,
-    abstract, or excerpt of an entry.
-</div>
-</td></tr>
+<td></td></tr>
 <tr><td align="left"><br>T</td></tr>
+<tr><td><a href="Syndic_xml.html#TYPEt">t</a> [<a href="Syndic_xml.html">Syndic_xml</a>]</td>
+<td></td></tr>
 <tr><td><a href="Syndic_rss2.html#TYPEtextinput">textinput</a> [<a href="Syndic_rss2.html">Syndic_rss2</a>]</td>
 <td><div class="info">
 A <a href="Syndic_rss2.html#TYPEchannel"><code class="code"><span class="constructor">Syndic_rss2</span>.channel</code></a> may optionally contain a <code class="code">textInput</code> sub-element,
@@ -284,11 +287,6 @@ The textinput element affords a method for submitting form data to
 <tr><td><a href="Syndic_rss1.html#TYPEtitle">title</a> [<a href="Syndic_rss1.html">Syndic_rss1</a>]</td>
 <td><div class="info">
 A descriptive title for the channel, image, item and textinput.
-</div>
-</td></tr>
-<tr><td><a href="Syndic_atom.html#TYPEtype_content">type_content</a> [<a href="Syndic_atom.html">Syndic_atom</a>]</td>
-<td><div class="info">
-Text (<a href="Syndic_atom.html#TYPEcontent"><code class="code"><span class="constructor">Syndic_atom</span>.content</code></a>) constructs have a <code class="code">type_content</code> attribute.
 </div>
 </td></tr>
 <tr><td align="left"><br>U</td></tr>

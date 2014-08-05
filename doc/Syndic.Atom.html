@@ -5,6 +5,7 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Syndic.Rss2.html">
+<link rel="next" href="Syndic.XML.html">
 <link rel="Up" href="Syndic.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
@@ -14,12 +15,14 @@
 <link title="Syndic_rss1" rel="Chapter" href="Syndic_rss1.html">
 <link title="Syndic_rss2" rel="Chapter" href="Syndic_rss2.html">
 <link title="Syndic_atom" rel="Chapter" href="Syndic_atom.html">
+<link title="Syndic_xml" rel="Chapter" href="Syndic_xml.html">
 <link title="Syndic_error" rel="Chapter" href="Syndic_error.html"><title>Syndic.Atom</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Syndic.Rss2.html" title="Syndic.Rss2">Previous</a>
 &nbsp;<a class="up" href="Syndic.html" title="Syndic">Up</a>
-&nbsp;</div>
+&nbsp;<a class="post" href="Syndic.XML.html" title="Syndic.XML">Next</a>
+</div>
 <h1>Module <a href="type_Syndic.Atom.html">Syndic.Atom</a> (<a href="code_Syndic.Atom.html">.ml</a>)</h1>
 
 <pre><span class="keyword">module</span> Atom: <code class="type">Syndic_atom</code></pre><hr width="100%">
@@ -661,48 +664,10 @@ If an <a href="Syndic_atom.html#TYPEentry"><code class="code"><span class="const
 </div>
 
 
-<pre><code><span id="TYPEtype_content"><span class="keyword">type</span> <code class="type"></code>type_content</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTtype_content.Html"><span class="constructor">Html</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTtype_content.Text"><span class="constructor">Text</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTtype_content.Xhtml"><span class="constructor">Xhtml</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTtype_content.Mime"><span class="constructor">Mime</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
-
-</tr></table>
-
+<pre><span id="TYPEmime"><span class="keyword">type</span> <code class="type"></code>mime</span> = <code class="type">string</code> </pre>
 <div class="info ">
-Text (<a href="Syndic_atom.html#TYPEcontent"><code class="code"><span class="constructor">Syndic_atom</span>.content</code></a>) constructs have a <code class="code">type_content</code> attribute. When
-    present, the value MUST be one of <code class="code"><span class="constructor">Text</span></code>, <code class="code"><span class="constructor">Html</span></code>, or <code class="code"><span class="constructor">Xhtml</span></code>.
-    When the Atom feed contains no indication, <code class="code"><span class="constructor">Text</span></code> is used.
-<p>
-
-    <a href=" http://tools.ietf.org/html/rfc4287#section-3.1.1"> See RFC 4287 § 3.1.1</a>
-<p>
-
-    When the value is <code class="code"><span class="constructor">Mime</span> m</code>, <code class="code">m</code> MUST conform to the syntax of a
-    MIME media type, but MUST NOT be a composite type (see Section
-    4.2.6 of <code class="code"><span class="constructor">MIMEREG</span></code>).
+A MIME type that conform to the syntax of a MIME media type, but
+    MUST NOT be a composite type (see Section 4.2.6 of <code class="code"><span class="constructor">MIMEREG</span></code>).
 <p>
 
     <a href=" http://tools.ietf.org/html/rfc4287#section-4.1.3.1">
@@ -710,47 +675,57 @@ Text (<a href="Syndic_atom.html#TYPEcontent"><code class="code"><span class="con
 </div>
 
 
-<pre><code><span id="TYPEcontent"><span class="keyword">type</span> <code class="type"></code>content</span> = {</code></pre><table class="typetable">
+<pre><code><span id="TYPEcontent"><span class="keyword">type</span> <code class="type"></code>content</span> = </code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
-<code>&nbsp;&nbsp;</code></td>
+<code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTcontent.ty">ty</span>&nbsp;: <code class="type"><a href="Syndic_atom.html#TYPEtype_content">type_content</a></code>;</code></td>
+<code><span id="TYPEELTcontent.Text"><span class="constructor">Text</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
 
 </tr>
 <tr>
 <td align="left" valign="top" >
-<code>&nbsp;&nbsp;</code></td>
+<code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTcontent.src">src</span>&nbsp;: <code class="type">Uri.t option</code>;</code></td>
+<code><span id="TYPEELTcontent.Html"><span class="constructor">Html</span></span> <span class="keyword">of</span> <code class="type"><a href="Syndic_xml.html#TYPEt">Syndic_xml.t</a> list</code></code></td>
 
 </tr>
 <tr>
 <td align="left" valign="top" >
-<code>&nbsp;&nbsp;</code></td>
+<code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTcontent.data">data</span>&nbsp;: <code class="type">string</code>;</code></td>
+<code><span id="TYPEELTcontent.Xhtml"><span class="constructor">Xhtml</span></span> <span class="keyword">of</span> <code class="type"><a href="Syndic_xml.html#TYPEt">Syndic_xml.t</a> list</code></code></td>
 
-</tr></table>
-}
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcontent.Mime"><span class="constructor">Mime</span></span> <span class="keyword">of</span> <code class="type"><a href="Syndic_atom.html#TYPEmime">mime</a> * string</code></code></td>
 
-<div class="info ">
-<code class="code">content</code> either contains or links to the content of the entry.
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcontent.Src"><span class="constructor">Src</span></span> <span class="keyword">of</span> <code class="type"><a href="Syndic_atom.html#TYPEmime">mime</a> option * Uri.t</code></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><code class="code">content</code> either contains or links to the content of the entry.
     The value of <code class="code">content</code> is Language-Sensitive.
     <a href=" http://tools.ietf.org/html/rfc4287#section-4.1.3"> See RFC 4287 § 4.1.3</a>
 <p>
 <ul>
-<li><code class="code">src</code>, if present, MUST be an IRI reference <code class="code"><span class="constructor">RFC3987</span></code>.  If <code class="code">src</code>
-      is present, <code class="code">data</code> MUST be empty.  Atom Processors MAY use the
-      IRI to retrieve the content and MAY choose to ignore remote
-      content or to present it in a different manner than local
-      content.</li>
-<li>If <code class="code">src</code> is present, <code class="code">ty</code> attribute SHOULD be provided and MUST
-      be a MIME media type <code class="code"><span class="constructor">MIMEREG</span></code>, rather than <code class="code"><span class="constructor">Text</span></code>, <code class="code"><span class="constructor">Html</span></code>, or
-      <code class="code"><span class="constructor">Xhtml</span></code>.  The value is advisory; that is to say, when the
-      corresponding URI (mapped from an IRI, if necessary) is
-      dereferenced, if the server providing that content also provides
-      a media type, the server-provided media type is authoritative.</li>
+<li><code class="code"><span class="constructor">Text</span></code>, <code class="code"><span class="constructor">Html</span></code>, <code class="code"><span class="constructor">Xhtml</span></code> or <code class="code"><span class="constructor">Mime</span></code> means that the content was
+      part of the document and is provided as an argument.
+      <a href="http://tools.ietf.org/html/rfc4287#section-3.1.1">
+      See RFC 4287 § 3.1.1</a></li>
+<li><code class="code"><span class="constructor">Src</span>(m, iri)</code> means that the content is to be found at <code class="code">iri</code> and
+      has MIME type <code class="code">m</code>.  Atom Processors MAY use the IRI to retrieve
+      the content and MAY choose to ignore remote content or to
+      present it in a different manner than local content.  The value
+      of <code class="code">m</code> is advisory; that is to say, when the corresponding URI
+      (mapped from an IRI, if necessary) is dereferenced, if the
+      server providing that content also provides a media type, the
+      server-provided media type is authoritative.</li>
 </ul>
 
     <a href=" http://tools.ietf.org/html/rfc4287#section-4.1.3.2">
@@ -790,13 +765,25 @@ Text (<a href="Syndic_atom.html#TYPEcontent"><code class="code"><span class="con
 &nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;atomInlineXHTMLContent<br>
 &nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;atomInlineOtherContent<br>
 &nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;atomOutOfLineContent<br>
-</code></pre><br>
-</div>
+</code></pre></td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
 
 
-<pre><span id="TYPEsummary"><span class="keyword">type</span> <code class="type"></code>summary</span> = <code class="type">string</code> </pre>
-<div class="info ">
-<code class="code">summary</code> is a Text construct that conveys a short summary,
+
+<pre><code><span id="TYPEsummary"><span class="keyword">type</span> <code class="type"></code>summary</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsummary.Text"><span class="constructor">Text</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsummary.Xhtml"><span class="constructor">Xhtml</span></span> <span class="keyword">of</span> <code class="type"><a href="Syndic_xml.html#TYPEt">Syndic_xml.t</a> list</code></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><code class="code">summary</code> is a Text construct that conveys a short summary,
     abstract, or excerpt of an entry.
 <p>
 
@@ -809,8 +796,9 @@ Text (<a href="Syndic_atom.html#TYPEcontent"><code class="code"><span class="con
     See RFC 4287 § 4.2.13 </a>
 <p>
 
-    <pre class="codepre"><code class="code">&nbsp;atomSummary&nbsp;=&nbsp;element&nbsp;atom:summary&nbsp;{&nbsp;atomTextConstruct&nbsp;}&nbsp;</code></pre><br>
-</div>
+    <pre class="codepre"><code class="code">&nbsp;atomSummary&nbsp;=&nbsp;element&nbsp;atom:summary&nbsp;{&nbsp;atomTextConstruct&nbsp;}&nbsp;</code></pre></td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+
 
 
 <pre><code><span id="TYPEentry"><span class="keyword">type</span> <code class="type"></code>entry</span> = {</code></pre><table class="typetable">
@@ -1111,9 +1099,9 @@ Text (<a href="Syndic_atom.html#TYPEcontent"><code class="code"><span class="con
 
 
 <pre><span id="VALparse"><span class="keyword">val</span> parse</span> : <code class="type">Xmlm.input -> <a href="Syndic_atom.html#TYPEfeed">feed</a></code></pre><div class="info ">
-<code class="code">analyze xml</code> parse <code class="code">xml</code>.  Beware that <code class="code">xml</code> is mutable, so when
-    the parsing fails, one have to create a new copy of <code class="code">xml</code> to use
-    it with another function.
+<code class="code">parse xml</code> returns the feed corresponding to <code class="code">xml</code>.  Beware that
+    <code class="code">xml</code> is mutable, so when the parsing fails, one have to create a
+    new copy of <code class="code">xml</code> to use it with another function.
 <p>
 
     Raise <code class="code"><span class="constructor">Error</span>.<span class="constructor">Expected</span></code>, <code class="code"><span class="constructor">Expected_Leaf</span></code> or <code class="code"><span class="constructor">Error</span>.<span class="constructor">Duplicate_Link</span></code>
