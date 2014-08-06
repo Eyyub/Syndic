@@ -65,27 +65,10 @@ Describes a person, corporation, or similar entity (hereafter,
     described above.
 <p>
 
-    <pre class="codepre"><code class="code">&nbsp;&nbsp;atomAuthor&nbsp;=&nbsp;element&nbsp;atom:author&nbsp;{&nbsp;atomPersonConstruct&nbsp;}&nbsp;</code></pre>
-<p>
-
-    where
-<p>
-
-<pre class="codepre"><code class="code">atomPersonConstruct&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;atomCommonAttributes,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(element&nbsp;atom:name&nbsp;{&nbsp;text&nbsp;}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;element&nbsp;atom:uri&nbsp;{&nbsp;atomUri&nbsp;}?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;element&nbsp;atom:email&nbsp;{&nbsp;atomEmailAddress&nbsp;}?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;extensionElement&nbsp;*&nbsp;)<br>
-</code></pre>
-<p>
-
    <a href=" http://tools.ietf.org/html/rfc4287#section-3.2"> See RFC 4287 § 3.2</a>
 <p>
 
-   This specification assigns no significance to the order of
-   appearance of the child elements in a Person construct. Person
-   constructs allow extension Metadata elements (see Section 6.4).
+     Person constructs allow extension Metadata elements (see Section 6.4).
 <p>
 
    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.1"> See RFC 4287 § 4.2.1</a><br>
@@ -138,17 +121,6 @@ The <code class="code">category</code> element conveys information about a categ
       respectively), not markup.</li>
 </ul>
 
-<pre class="codepre"><code class="code">&nbsp;&nbsp;atomCategory&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;element&nbsp;atom:category&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atomCommonAttributes,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribute&nbsp;term&nbsp;{&nbsp;text&nbsp;},<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribute&nbsp;scheme&nbsp;{&nbsp;atomUri&nbsp;}?,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribute&nbsp;label&nbsp;{&nbsp;text&nbsp;}?,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undefinedContent<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-</code></pre>
-<p>
-
     <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.2.1"> See RFC 4287 § 4.2.2.1 </a><br>
 </div>
 
@@ -191,16 +163,7 @@ The <code class="code">generator</code> element's content identifies the agent u
       agent.</li>
 </ul>
 
-    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.4"> See RFC 4287 § 4.2.4 </a>
-<p>
-
-<pre class="codepre"><code class="code">&nbsp;&nbsp;atomGenerator&nbsp;=&nbsp;element&nbsp;atom:generator&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atomCommonAttributes,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribute&nbsp;uri&nbsp;{&nbsp;atomUri&nbsp;}?,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribute&nbsp;version&nbsp;{&nbsp;text&nbsp;}?,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br>
-&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-</code></pre><br>
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.4"> See RFC 4287 § 4.2.4 </a><br>
 </div>
 
 
@@ -216,13 +179,7 @@ The <code class="code">icon</code> element's content is an IRI reference <code c
     size.
 <p>
 
-    <a href="http://tools.ietf.org/html/rfc4287#section-4.2.5"> See RFC 4287 § 4.2.5</a>
-<p>
-
-<pre class="codepre"><code class="code">&nbsp;&nbsp;atomIcon&nbsp;=&nbsp;element&nbsp;atom:icon&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atomCommonAttributes,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-</code></pre><br>
+    <a href="http://tools.ietf.org/html/rfc4287#section-4.2.5"> See RFC 4287 § 4.2.5</a><br>
 </div>
 
 
@@ -242,14 +199,7 @@ The <code class="code">id</code> element conveys a permanent, universally unique
     here, at least, they can not be checked here.
 <p>
 
-    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.6"> See RFC 4287 § 4.2.6 </a>
-<p>
-
-<pre class="codepre"><code class="code">&nbsp;&nbsp;atomId&nbsp;=&nbsp;element&nbsp;atom:id&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atomCommonAttributes,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(atomUri)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-</code></pre><br>
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.6"> See RFC 4287 § 4.2.6 </a><br>
 </div>
 
 
@@ -404,20 +354,6 @@ The <code class="code">id</code> element conveys a permanent, universally unique
       elements MAY have a length attribute.</li>
 </ul>
 
-<pre class="codepre"><code class="code">&nbsp;&nbsp;atomLink&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;element&nbsp;atom:link&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atomCommonAttributes,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribute&nbsp;href&nbsp;{&nbsp;atomUri&nbsp;},<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribute&nbsp;rel&nbsp;{&nbsp;atomNCName&nbsp;<span class="keywordsign">|</span>&nbsp;atomUri&nbsp;}?,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribute&nbsp;<span class="keyword">type</span>&nbsp;{&nbsp;atomMediaType&nbsp;}?,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribute&nbsp;hreflang&nbsp;{&nbsp;atomLanguageTag&nbsp;}?,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribute&nbsp;title&nbsp;{&nbsp;text&nbsp;}?,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribute&nbsp;length&nbsp;{&nbsp;text&nbsp;}?,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undefinedContent<br>
-&nbsp;&nbsp;}<br>
-</code></pre>
-<p>
-
     <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.7.1">
     See RFC 4287 § 4.2.7.1 </a><br>
 </div>
@@ -432,14 +368,7 @@ The <code class="code">id</code> element conveys a permanent, universally unique
     The image SHOULD have an aspect ratio of 2 (horizontal) to 1 (vertical).
 <p>
 
-    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.8"> See RFC 4287 § 4.2.8</a>
-<p>
-
-<pre class="codepre"><code class="code">&nbsp;&nbsp;atomLogo&nbsp;=&nbsp;element&nbsp;atom:logo&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atomCommonAttributes,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(atomUri)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-</code></pre><br>
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.8"> See RFC 4287 § 4.2.8</a><br>
 </div>
 
 
@@ -453,10 +382,7 @@ The <code class="code">id</code> element conveys a permanent, universally unique
     creation or first availability of the resource.
 <p>
 
-    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.9"> See RFC 4287 § 4.2.9</a>
-<p>
-
-    <pre class="codepre"><code class="code">&nbsp;atomPublished&nbsp;=&nbsp;element&nbsp;atom:published&nbsp;{&nbsp;atomDateConstruct&nbsp;}&nbsp;</code></pre><br>
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.9"> See RFC 4287 § 4.2.9</a><br>
 </div>
 
 
@@ -476,10 +402,7 @@ The <code class="code">id</code> element conveys a permanent, universally unique
 <p>
 
     <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.10">
-    See RFC 4287 § 4.2.10 </a>
-<p>
-
-    <pre class="codepre"><code class="code">&nbsp;atomRights&nbsp;=&nbsp;element&nbsp;atom:rights&nbsp;{&nbsp;atomTextConstruct&nbsp;}&nbsp;</code></pre><br>
+    See RFC 4287 § 4.2.10 </a><br>
 </div>
 
 
@@ -488,10 +411,7 @@ The <code class="code">id</code> element conveys a permanent, universally unique
 <code class="code">title</code> is a Text construct that conveys a human-readable title
     for an entry or feed.
     <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.14">
-    See RFC 4287 § 4.2.14 </a>
-<p>
-
-    <pre class="codepre"><code class="code">&nbsp;atomTitle&nbsp;=&nbsp;element&nbsp;atom:title&nbsp;{&nbsp;atomTextConstruct&nbsp;}&nbsp;</code></pre><br>
+    See RFC 4287 § 4.2.14 </a><br>
 </div>
 
 
@@ -500,10 +420,7 @@ The <code class="code">id</code> element conveys a permanent, universally unique
 <code class="code">subtitle</code> is a Text construct that conveys a human-readable
     description or subtitle for a feed.
     <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.12">
-    See RFC 4287 § 4.2.12 </a>
-<p>
-
-    <pre class="codepre"><code class="code">&nbsp;atomSubtitle&nbsp;=&nbsp;element&nbsp;atom:subtitle&nbsp;{&nbsp;atomTextConstruct&nbsp;}&nbsp;</code></pre><br>
+    See RFC 4287 § 4.2.12 </a><br>
 </div>
 
 
@@ -519,10 +436,7 @@ The <code class="code">id</code> element conveys a permanent, universally unique
 <p>
 
     <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.15">
-    See RFC 4287 § 4.2.15 </a>
-<p>
-
-    <pre class="codepre"><code class="code">&nbsp;atomUpdated&nbsp;=&nbsp;element&nbsp;atom:updated&nbsp;{&nbsp;atomDateConstruct&nbsp;}&nbsp;</code></pre><br>
+    See RFC 4287 § 4.2.15 </a><br>
 </div>
 
 
@@ -640,27 +554,7 @@ If an <a href="Syndic_atom.html#TYPEentry"><code class="code"><span class="const
 <p>
 
     <a href=" http://tools.ietf.org/html/rfc4287#section-4.1.2">
-    See RFC 4287 § 4.1.2 for more details.</a>
-<p>
-
-<pre class="codepre"><code class="code">&nbsp;&nbsp;atomSource&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;element&nbsp;atom:source&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atomCommonAttributes,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(atomAuthor*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomCategory*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomContributor*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomGenerator?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomIcon?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomId?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomLink*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomLogo?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomRights?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomSubtitle?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomTitle?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomUpdated?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;extensionElement&nbsp;*&nbsp;)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-</code></pre><br>
+    See RFC 4287 § 4.1.2 for more details.</a><br>
 </div>
 
 
@@ -729,43 +623,7 @@ A MIME type that conform to the syntax of a MIME media type, but
 </ul>
 
     <a href=" http://tools.ietf.org/html/rfc4287#section-4.1.3.2">
-    See RFC 4287 § 4.1.3.2 </a>
-<p>
-
-<pre class="codepre"><code class="code">&nbsp;&nbsp;atomInlineTextContent&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;element&nbsp;atom:content&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atomCommonAttributes,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribute&nbsp;<span class="keyword">type</span>&nbsp;{&nbsp;<span class="string">"text"</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="string">"html"</span>&nbsp;}?,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(text)*<br>
-&nbsp;&nbsp;}<br>
-<br>
-&nbsp;&nbsp;atomInlineXHTMLContent&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;element&nbsp;atom:content&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atomCommonAttributes,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribute&nbsp;<span class="keyword">type</span>&nbsp;{&nbsp;<span class="string">"xhtml"</span>&nbsp;},<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xhtmlDiv<br>
-&nbsp;&nbsp;}<br>
-<br>
-&nbsp;&nbsp;atomInlineOtherContent&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;element&nbsp;atom:content&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atomCommonAttributes,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribute&nbsp;<span class="keyword">type</span>&nbsp;{&nbsp;atomMediaType&nbsp;}?,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(text<span class="keywordsign">|</span>anyElement)*<br>
-&nbsp;&nbsp;}<br>
-<br>
-&nbsp;&nbsp;atomOutOfLineContent&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;element&nbsp;atom:content&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atomCommonAttributes,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribute&nbsp;<span class="keyword">type</span>&nbsp;{&nbsp;atomMediaType&nbsp;}?,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribute&nbsp;src&nbsp;{&nbsp;atomUri&nbsp;},<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;empty<br>
-&nbsp;&nbsp;}<br>
-<br>
-&nbsp;&nbsp;atomContent&nbsp;=&nbsp;atomInlineTextContent<br>
-&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;atomInlineXHTMLContent<br>
-&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;atomInlineOtherContent<br>
-&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;atomOutOfLineContent<br>
-</code></pre></td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+    See RFC 4287 § 4.1.3.2 </a></td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr></table>
 
 
@@ -926,27 +784,7 @@ A MIME type that conform to the syntax of a MIME media type, but
 </li>
 </ul>
 
-    <a href=" http://tools.ietf.org/html/rfc4287#section-4.1.2"> See RFC 4287 § 4.1.2</a>
-<p>
-
-<pre class="codepre"><code class="code">&nbsp;&nbsp;atomEntry&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;element&nbsp;atom:entry&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atomCommonAttributes,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(atomAuthor*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomCategory*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomContent?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomContributor*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomId<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomLink*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomPublished?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomRights?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomSource?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomSummary?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomTitle<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomUpdated<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;extensionElement&nbsp;*&nbsp;)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-</code></pre><br>
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.1.2"> See RFC 4287 § 4.1.2</a><br>
 </div>
 
 
@@ -1073,28 +911,7 @@ A MIME type that conform to the syntax of a MIME media type, but
     the latest <a href="Syndic_atom.html#TYPEupdated"><code class="code"><span class="constructor">Syndic_atom</span>.updated</code></a> timestamp.
 <p>
 
-    <a href=" http://tools.ietf.org/html/rfc4287#section-4.1.1"> See RFC 4287 § 4.1.1</a>
-<p>
-
-<pre class="codepre"><code class="code">&nbsp;&nbsp;atomFeed&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;element&nbsp;atom:feed&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atomCommonAttributes,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(atomAuthor*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomCategory*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomContributor*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomGenerator?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomIcon?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomId<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomLink*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomLogo?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomRights?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomSubtitle?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomTitle<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;atomUpdated<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">&amp;</span>&nbsp;extensionElement&nbsp;*&nbsp;),<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atomEntry*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-</code></pre><br>
+    <a href=" http://tools.ietf.org/html/rfc4287#section-4.1.1"> See RFC 4287 § 4.1.1</a><br>
 </div>
 
 
