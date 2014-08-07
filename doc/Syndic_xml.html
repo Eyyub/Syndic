@@ -26,9 +26,17 @@
 <h1>Module <a href="type_Syndic_xml.html">Syndic_xml</a></h1>
 
 <pre><span class="keyword">module</span> Syndic_xml: <code class="code"><span class="keyword">sig</span></code> <a href="Syndic_xml.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-A XML tree.<br>
+The type for the optional
+    <a href="http://www.w3.org/TR/REC-xml/#dt-doctype">DTD</a>.<br>
 </div>
 <hr width="100%">
+
+<pre><span id="TYPEdtd"><span class="keyword">type</span> <code class="type"></code>dtd</span> = <code class="type">string option</code> </pre>
+<div class="info ">
+The type for the optional
+    <a href="http://www.w3.org/TR/REC-xml/#dt-doctype">DTD</a>.<br>
+</div>
+
 
 <pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = </code></pre><table class="typetable">
 <tr>
@@ -46,9 +54,25 @@ A XML tree.<br>
 
 </tr></table>
 
+<div class="info ">
+A XML tree.<br>
+</div>
 
 
-<pre><span id="VALof_xmlm"><span class="keyword">val</span> of_xmlm</span> : <code class="type">Xmlm.input -> string option * <a href="Syndic_xml.html#TYPEt">t</a></code></pre>
+<pre><span id="VALof_xmlm"><span class="keyword">val</span> of_xmlm</span> : <code class="type">Xmlm.input -> <a href="Syndic_xml.html#TYPEdtd">dtd</a> * <a href="Syndic_xml.html#TYPEt">t</a></code></pre><div class="info ">
+<code class="code">of_xmlm doc</code> converts an XML document <code class="code">doc</code> into a DTD and a
+    tree representing the document.<br>
+</div>
+
+<pre><span id="VALof_html"><span class="keyword">val</span> of_html</span> : <code class="type">?enc:Xmlm.encoding -><br>       ?entity:(string -> string option) -> string -> <a href="Syndic_xml.html#TYPEt">t</a> list</code></pre><div class="info ">
+<code class="code">of_html s</code> tries to convert a sequence of HTML tags into a list
+    of trees.  This function tries to be permissive and is suitable
+    for excepts of HTML code.<br>
+</div>
+<div class="param_info"><code class="code">enc</code> : gives the character encoding.  Default: <code class="code"><span class="keywordsign">`</span><span class="constructor">UTF_8</span></code>.</div>
+<div class="param_info"><code class="code">entity</code> : how <code class="code"><span class="constructor">Xmlm</span></code> unknown entities are transformed.  By
+    default, they are preserved in their original form.</div>
+
 <pre><span id="VALto_xmlm"><span class="keyword">val</span> to_xmlm</span> : <code class="type"><a href="Syndic_xml.html#TYPEt">t</a> -> Xmlm.output -> unit</code></pre>
 <pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type"><a href="Syndic_xml.html#TYPEt">t</a> -> string</code></pre>
 <pre><span id="VALto_buffer"><span class="keyword">val</span> to_buffer</span> : <code class="type"><a href="Syndic_xml.html#TYPEt">t</a> -> Buffer.t -> unit</code></pre></body></html>

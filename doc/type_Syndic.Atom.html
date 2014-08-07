@@ -101,6 +101,7 @@
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;summary&nbsp;=<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Syndic_atom</span>.summary&nbsp;=<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Text</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Html</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Syndic_xml</span>.t&nbsp;list<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Xhtml</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Syndic_xml</span>.t&nbsp;list<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;entry&nbsp;=<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Syndic_atom</span>.entry&nbsp;=&nbsp;{<br>

@@ -76,7 +76,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Xhtml</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Syndic_xml</span>.t&nbsp;list<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Mime</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Syndic_atom</span>.mime&nbsp;*&nbsp;string<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Src</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Syndic_atom</span>.mime&nbsp;option&nbsp;*&nbsp;<span class="constructor">Uri</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;summary&nbsp;=&nbsp;<span class="constructor">Text</span>&nbsp;<span class="keyword">of</span>&nbsp;string&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Xhtml</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Syndic_xml</span>.t&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;summary&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Text</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Html</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Syndic_xml</span>.t&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Xhtml</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Syndic_xml</span>.t&nbsp;list<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;entry&nbsp;=&nbsp;{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;authors&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.author&nbsp;*&nbsp;<span class="constructor">Syndic_atom</span>.author&nbsp;list;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;categories&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.category&nbsp;list;<br>
