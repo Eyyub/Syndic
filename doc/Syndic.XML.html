@@ -58,15 +58,6 @@ A XML tree.<br>
     tree representing the document.<br>
 </div>
 
-<pre><span id="VALof_html"><span class="keyword">val</span> of_html</span> : <code class="type">?enc:Xmlm.encoding -><br>       ?entity:(string -> string option) -> string -> <a href="Syndic_xml.html#TYPEt">t</a> list</code></pre><div class="info ">
-<code class="code">of_html s</code> tries to convert a sequence of HTML tags into a list
-    of trees.  This function tries to be permissive and is suitable
-    for excepts of HTML code.<br>
-</div>
-<div class="param_info"><code class="code">enc</code> : gives the character encoding.  Default: <code class="code"><span class="keywordsign">`</span><span class="constructor">UTF_8</span></code>.</div>
-<div class="param_info"><code class="code">entity</code> : how <code class="code"><span class="constructor">Xmlm</span></code> unknown entities are transformed.  By
-    default, they are preserved in their original form.</div>
-
-<pre><span id="VALto_xmlm"><span class="keyword">val</span> to_xmlm</span> : <code class="type"><a href="Syndic_xml.html#TYPEt">t</a> -> Xmlm.output -> unit</code></pre>
-<pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type"><a href="Syndic_xml.html#TYPEt">t</a> -> string</code></pre>
-<pre><span id="VALto_buffer"><span class="keyword">val</span> to_buffer</span> : <code class="type"><a href="Syndic_xml.html#TYPEt">t</a> -> Buffer.t -> unit</code></pre></body></html>
+<pre><span id="VALto_xmlm"><span class="keyword">val</span> to_xmlm</span> : <code class="type">?dtd:string -> <a href="Syndic_xml.html#TYPEt">t</a> -> Xmlm.output -> unit</code></pre>
+<pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type">?ns_prefix:(string -> string option) -> <a href="Syndic_xml.html#TYPEt">t</a> -> string</code></pre>
+<pre><span id="VALto_buffer"><span class="keyword">val</span> to_buffer</span> : <code class="type">?ns_prefix:(string -> string option) -> <a href="Syndic_xml.html#TYPEt">t</a> -> Buffer.t -> unit</code></pre></body></html>
