@@ -11,7 +11,8 @@
 <link title="Syndic_rss2" rel="Chapter" href="Syndic_rss2.html">
 <link title="Syndic_atom" rel="Chapter" href="Syndic_atom.html">
 <link title="Syndic_xml" rel="Chapter" href="Syndic_xml.html">
-<link title="Syndic_error" rel="Chapter" href="Syndic_error.html"><title>Syndic_atom</title>
+<link title="Syndic_error" rel="Chapter" href="Syndic_error.html">
+<link title="Syndic_conf" rel="Chapter" href="Syndic_conf.html"><title>Syndic_atom</title>
 </head>
 <body>
 <code class="code"><span class="keyword">sig</span><br>
@@ -59,7 +60,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;generator&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.generator&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;icon&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.icon&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;id&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.id;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;links&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.link&nbsp;*&nbsp;<span class="constructor">Syndic_atom</span>.link&nbsp;list;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;links&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.link&nbsp;list;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;logo&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.logo&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;rights&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.rights&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;subtitle&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.subtitle&nbsp;option;<br>
@@ -104,6 +105,14 @@
 &nbsp;&nbsp;&nbsp;&nbsp;entries&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.entry&nbsp;list;<br>
 &nbsp;&nbsp;}<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;parse&nbsp;:&nbsp;<span class="constructor">Xmlm</span>.input&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Syndic_atom</span>.feed<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_xml&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.feed&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Syndic_xml</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;output&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.feed&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Xmlm</span>.dest&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;aggregate&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;?id:<span class="constructor">Syndic_atom</span>.id&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?updated:<span class="constructor">Syndic_atom</span>.updated&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?subtitle:<span class="constructor">Syndic_atom</span>.subtitle&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?title:<span class="constructor">Syndic_atom</span>.text_construct&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Uri</span>.t&nbsp;option&nbsp;*&nbsp;<span class="constructor">Syndic_atom</span>.feed)&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Syndic_atom</span>.feed<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;unsafe&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Xmlm</span>.input&nbsp;<span class="keywordsign">-&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;[&gt;&nbsp;<span class="keywordsign">`</span><span class="constructor">Feed</span>&nbsp;<span class="keyword">of</span><br>

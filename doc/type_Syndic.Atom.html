@@ -11,7 +11,8 @@
 <link title="Syndic_rss2" rel="Chapter" href="Syndic_rss2.html">
 <link title="Syndic_atom" rel="Chapter" href="Syndic_atom.html">
 <link title="Syndic_xml" rel="Chapter" href="Syndic_xml.html">
-<link title="Syndic_error" rel="Chapter" href="Syndic_error.html"><title>Syndic.Atom</title>
+<link title="Syndic_error" rel="Chapter" href="Syndic_error.html">
+<link title="Syndic_conf" rel="Chapter" href="Syndic_conf.html"><title>Syndic.Atom</title>
 </head>
 <body>
 <code class="code"><span class="keyword">sig</span><br>
@@ -76,7 +77,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;generator&nbsp;:&nbsp;generator&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;icon&nbsp;:&nbsp;icon&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;id&nbsp;:&nbsp;id;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;links&nbsp;:&nbsp;link&nbsp;*&nbsp;link&nbsp;list;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;links&nbsp;:&nbsp;link&nbsp;list;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;logo&nbsp;:&nbsp;logo&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;rights&nbsp;:&nbsp;rights&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;subtitle&nbsp;:&nbsp;subtitle&nbsp;option;<br>
@@ -124,6 +125,13 @@
 &nbsp;&nbsp;&nbsp;&nbsp;entries&nbsp;:&nbsp;entry&nbsp;list;<br>
 &nbsp;&nbsp;}<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;parse&nbsp;:&nbsp;<span class="constructor">Xmlm</span>.input&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;feed<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_xml&nbsp;:&nbsp;feed&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Syndic_xml</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;output&nbsp;:&nbsp;feed&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Xmlm</span>.dest&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;aggregate&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;?id:id&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?updated:updated&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?subtitle:subtitle&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?title:text_construct&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="constructor">Uri</span>.t&nbsp;option&nbsp;*&nbsp;feed)&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;feed<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;unsafe&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Xmlm</span>.input&nbsp;<span class="keywordsign">-&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;[&gt;&nbsp;<span class="keywordsign">`</span><span class="constructor">Feed</span>&nbsp;<span class="keyword">of</span><br>

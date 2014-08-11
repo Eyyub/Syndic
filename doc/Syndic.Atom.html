@@ -16,7 +16,8 @@
 <link title="Syndic_rss2" rel="Chapter" href="Syndic_rss2.html">
 <link title="Syndic_atom" rel="Chapter" href="Syndic_atom.html">
 <link title="Syndic_xml" rel="Chapter" href="Syndic_xml.html">
-<link title="Syndic_error" rel="Chapter" href="Syndic_error.html"><title>Syndic.Atom</title>
+<link title="Syndic_error" rel="Chapter" href="Syndic_error.html">
+<link title="Syndic_conf" rel="Chapter" href="Syndic_conf.html"><title>Syndic.Atom</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Syndic.Rss2.html" title="Syndic.Rss2">Previous</a>
@@ -52,7 +53,9 @@
 </tr></table>
 
 <div class="info ">
-A <a href="http://tools.ietf.org/html/rfc4287#section-3.1">text construct</a>.<br>
+A <a href="http://tools.ietf.org/html/rfc4287#section-3.1">text construct</a>.
+    It contains human-readable text, usually in small quantities.  The
+    content of Text constructs is Language-Sensitive.<br>
 </div>
 
 
@@ -93,13 +96,16 @@ Describes a person, corporation, or similar entity (hereafter,
     described above.
 <p>
 
-   <a href=" http://tools.ietf.org/html/rfc4287#section-3.2"> See RFC 4287 § 3.2</a>
+    <a href=" http://tools.ietf.org/html/rfc4287#section-3.2"> See RFC 4287 § 3.2</a>
 <p>
 
-     Person constructs allow extension Metadata elements (see Section 6.4).
+    Person constructs allow extension Metadata elements (see Section 6.4).
 <p>
 
-   <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.1"> See RFC 4287 § 4.2.1</a><br>
+   They are used for authors
+   (<a href="http://tools.ietf.org/html/rfc4287#section-4.2.1"> See RFC 4287 § 4.2.1</a>)
+   and contributors
+   (<a href="http://tools.ietf.org/html/rfc4287#section-4.2.3"> See RFC 4287 § 4.2.3</a>)<br>
 </div>
 
 
@@ -418,8 +424,6 @@ The <code class="code">id</code> element conveys a permanent, universally unique
 <div class="info ">
 <code class="code">rights</code> is a Text construct that conveys information about rights
     held in and over an entry or feed.
-<p>
-
     The <code class="code">rights</code> element SHOULD NOT be used to convey machine-readable
     licensing information.
 <p>
@@ -429,8 +433,8 @@ The <code class="code">id</code> element conveys a permanent, universally unique
     if present, is considered to apply to the entry.
 <p>
 
-    <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.10">
-    See RFC 4287 § 4.2.10 </a><br>
+    See <a href=" http://tools.ietf.org/html/rfc4287#section-4.2.10">
+    RFC 4287 § 4.2.10 </a><br>
 </div>
 
 
@@ -516,7 +520,7 @@ The <code class="code">id</code> element conveys a permanent, universally unique
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTsource.links">links</span>&nbsp;: <code class="type"><a href="Syndic_atom.html#TYPElink">link</a> * <a href="Syndic_atom.html#TYPElink">link</a> list</code>;</code></td>
+<code><span id="TYPEELTsource.links">links</span>&nbsp;: <code class="type"><a href="Syndic_atom.html#TYPElink">link</a> list</code>;</code></td>
 
 </tr>
 <tr>
@@ -936,5 +940,21 @@ A MIME type that conform to the syntax of a MIME media type, but
 
     Raise <code class="code"><span class="constructor">Error</span>.<span class="constructor">Expected</span></code>, <code class="code"><span class="constructor">Expected_Data</span></code> or <code class="code"><span class="constructor">Error</span>.<span class="constructor">Duplicate_Link</span></code>
     if <code class="code">xml</code> is not a valid Atom document.<br>
+</div>
+
+<pre><span id="VALto_xml"><span class="keyword">val</span> to_xml</span> : <code class="type"><a href="Syndic_atom.html#TYPEfeed">feed</a> -> <a href="Syndic_xml.html#TYPEt">Syndic_xml.t</a></code></pre><div class="info ">
+<code class="code">to_xml f</code> converts the feed <code class="code">f</code> to an XML tree.<br>
+</div>
+
+<pre><span id="VALoutput"><span class="keyword">val</span> output</span> : <code class="type"><a href="Syndic_atom.html#TYPEfeed">feed</a> -> Xmlm.dest -> unit</code></pre><div class="info ">
+<code class="code">output f dest</code> writes the XML tree of the feed <code class="code">f</code> to <code class="code">dest</code>.<br>
+</div>
+
+<pre><span id="VALaggregate"><span class="keyword">val</span> aggregate</span> : <code class="type">?id:<a href="Syndic_atom.html#TYPEid">id</a> -><br>       ?updated:<a href="Syndic_atom.html#TYPEupdated">updated</a> -><br>       ?subtitle:<a href="Syndic_atom.html#TYPEsubtitle">subtitle</a> -><br>       ?title:<a href="Syndic_atom.html#TYPEtext_construct">text_construct</a> -><br>       (Uri.t option * <a href="Syndic_atom.html#TYPEfeed">feed</a>) list -> <a href="Syndic_atom.html#TYPEfeed">feed</a></code></pre><div class="info ">
+<code class="code">aggregate feeds</code> returns a single feed containing all the posts
+    in <code class="code">feeds</code>.  Each element of <code class="code">feeds</code> has the form <code class="code">(uri, feed)</code>
+    where <code class="code">uri</code>, if given, is supposed to be the location of <code class="code">feed</code>.
+    It is used to add Alternate links to the entries sources showing
+    their origin.<br>
 </div>
 </body></html>
