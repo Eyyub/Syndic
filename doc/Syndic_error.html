@@ -28,41 +28,6 @@ The common signature that all error modules must (at least) satisfy.<br>
 </div>
 <hr width="100%">
 
-<pre><code><span id="TYPEexpected"><span class="keyword">type</span> <code class="type"></code>expected</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTexpected.Attr"><span class="constructor">Attr</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
+<pre><span id="EXCEPTIONError"><span class="keyword">exception</span> Error</span> <span class="keyword">of</span> <code class="type">Xmlm.pos * string</code></pre>
 
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTexpected.Tag"><span class="constructor">Tag</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTexpected.Data"><span class="constructor">Data</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTexpected.Root"><span class="constructor">Root</span></span></code></td>
-
-</tr></table>
-
-
-
-<pre><span id="EXCEPTIONExpected"><span class="keyword">exception</span> Expected</span> <span class="keyword">of</span> <code class="type"><a href="Syndic_error.html#TYPEexpected">expected</a> * <a href="Syndic_error.html#TYPEexpected">expected</a></code></pre>
-
-<pre><span id="EXCEPTIONExpected_Data"><span class="keyword">exception</span> Expected_Data</span></pre>
-
-<pre><span id="VALstring_of_expectation"><span class="keyword">val</span> string_of_expectation</span> : <code class="type"><a href="Syndic_error.html#TYPEexpected">expected</a> * <a href="Syndic_error.html#TYPEexpected">expected</a> -> string</code></pre>
-<pre><span id="VALraise_expectation"><span class="keyword">val</span> raise_expectation</span> : <code class="type"><a href="Syndic_error.html#TYPEexpected">expected</a> -> <a href="Syndic_error.html#TYPEexpected">expected</a> -> 'a</code></pre></body></html>
+<pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type">exn -> string</code></pre></body></html>

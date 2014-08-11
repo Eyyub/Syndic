@@ -21,10 +21,5 @@
 &nbsp;</div>
 <h1>Module <a href="type_Syndic_atom.Error.html">Syndic_atom.Error</a></h1>
 
-<pre><span class="keyword">module</span> Error: <code class="code"><span class="keyword">sig</span></code> <a href="Syndic_atom.Error.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
-
-<pre><span class="keyword">include</span> <a href="Syndic_error.html">Syndic_error</a></pre>
-
-<pre><span id="EXCEPTIONDuplicate_Link"><span class="keyword">exception</span> Duplicate_Link</span> <span class="keyword">of</span> <code class="type">(Uri.t * string * string) * (string * string)</code></pre>
-
-<pre><span id="VALstring_of_duplicate_exception"><span class="keyword">val</span> string_of_duplicate_exception</span> : <code class="type">(Uri.t * string * string) * (string * string) -> string</code></pre></body></html>
+<pre><span class="keyword">module</span> Error: <code class="type">module type of Syndic_error</code></pre><hr width="100%">
+</body></html>

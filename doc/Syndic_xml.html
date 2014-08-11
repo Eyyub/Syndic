@@ -26,8 +26,7 @@
 <h1>Module <a href="type_Syndic_xml.html">Syndic_xml</a></h1>
 
 <pre><span class="keyword">module</span> Syndic_xml: <code class="code"><span class="keyword">sig</span></code> <a href="Syndic_xml.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-The type for the optional
-    <a href="http://www.w3.org/TR/REC-xml/#dt-doctype">DTD</a>.<br>
+Common module for XML parsing<br>
 </div>
 <hr width="100%">
 
@@ -43,14 +42,14 @@ The type for the optional
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTt.Node"><span class="constructor">Node</span></span> <span class="keyword">of</span> <code class="type">Xmlm.tag * <a href="Syndic_xml.html#TYPEt">t</a> list</code></code></td>
+<code><span id="TYPEELTt.Node"><span class="constructor">Node</span></span> <span class="keyword">of</span> <code class="type">Xmlm.pos * Xmlm.tag * <a href="Syndic_xml.html#TYPEt">t</a> list</code></code></td>
 
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTt.Data"><span class="constructor">Data</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
+<code><span id="TYPEELTt.Data"><span class="constructor">Data</span></span> <span class="keyword">of</span> <code class="type">Xmlm.pos * string</code></code></td>
 
 </tr></table>
 
@@ -59,6 +58,7 @@ A XML tree.<br>
 </div>
 
 
+<pre><span id="VALget_position"><span class="keyword">val</span> get_position</span> : <code class="type"><a href="Syndic_xml.html#TYPEt">t</a> -> Xmlm.pos</code></pre>
 <pre><span id="VALof_xmlm"><span class="keyword">val</span> of_xmlm</span> : <code class="type">Xmlm.input -> <a href="Syndic_xml.html#TYPEdtd">dtd</a> * <a href="Syndic_xml.html#TYPEt">t</a></code></pre><div class="info ">
 <code class="code">of_xmlm doc</code> converts an XML document <code class="code">doc</code> into a DTD and a
     tree representing the document.<br>
