@@ -1,15 +1,7 @@
 (** [Syndic.Rss2]: compliant with
     {{: http://www.rssboard.org/rss-specification#ltcloudgtSubelementOfLtchannelgt} RSS 2.0}. *)
 
-module Error : sig
-  include module type of Syndic_error
-
-  exception Size_Exceeded of string * int * int
-  exception Item_expectation
-
-  val string_of_size_exceeded : string * int * int -> string
-  val string_of_item_exceptation : string
-end
+module Error : module type of Syndic_error
 
 type image =
   {
@@ -178,7 +170,7 @@ type source =
  *)
 
 type story =
-  | All of string * string
+  | All of string * string  (** [All(title, description)] *)
   | Title of string
   | Description of string
 
@@ -317,6 +309,11 @@ val parse : Xmlm.input -> channel
 
     Raise [Error.Expected], [Error.Size_Exceeded] or
     [Error.Item_expectation] if [xml] is not a valid RSS2 document. *)
+
+
+val to_atom : channel -> Syndic_atom.feed
+(** [to_atom ch] returns an Atom feed that (mostly) contains the same
+    information. *)
 
 
 (**/**)
