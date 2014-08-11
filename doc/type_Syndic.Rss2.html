@@ -19,10 +19,6 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">exception</span>&nbsp;<span class="constructor">Error</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Xmlm</span>.pos&nbsp;*&nbsp;string<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_string&nbsp;:&nbsp;exn&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">exception</span>&nbsp;<span class="constructor">Size_Exceeded</span>&nbsp;<span class="keyword">of</span>&nbsp;string&nbsp;*&nbsp;int&nbsp;*&nbsp;int<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">exception</span>&nbsp;<span class="constructor">Item_expectation</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_size_exceeded&nbsp;:&nbsp;string&nbsp;*&nbsp;int&nbsp;*&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_item_exceptation&nbsp;:&nbsp;string<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;image&nbsp;=<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Syndic_rss2</span>.image&nbsp;=&nbsp;{<br>
@@ -102,6 +98,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;items&nbsp;:&nbsp;item&nbsp;list;<br>
 &nbsp;&nbsp;}<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;parse&nbsp;:&nbsp;<span class="constructor">Xmlm</span>.input&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;channel<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_atom&nbsp;:&nbsp;channel&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Syndic_atom</span>.feed<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;unsafe&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Xmlm</span>.input&nbsp;<span class="keywordsign">-&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;[&gt;&nbsp;<span class="keywordsign">`</span><span class="constructor">Channel</span>&nbsp;<span class="keyword">of</span><br>

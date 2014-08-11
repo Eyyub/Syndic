@@ -31,7 +31,7 @@
 </div>
 <hr width="100%">
 
-<pre><span class="keyword">module</span> <a href="Syndic_rss2.Error.html">Error</a>: <code class="code"><span class="keyword">sig</span></code> <a href="Syndic_rss2.Error.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
+<pre><span class="keyword">module</span> <a href="Syndic_rss2.Error.html">Error</a>: <code class="type">module type of Syndic_error</code></pre>
 <pre><code><span id="TYPEimage"><span class="keyword">type</span> <code class="type"></code>image</span> = {</code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
@@ -383,7 +383,7 @@ A <a href="Syndic_rss2.html#TYPEchannel"><code class="code"><span class="constru
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTstory.All"><span class="constructor">All</span></span> <span class="keyword">of</span> <code class="type">string * string</code></code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><code class="code"><span class="constructor">All</span>(title, description)</code></td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
@@ -719,5 +719,10 @@ Here's a list of the required channel elements, each with a brief
 
     Raise <code class="code"><span class="constructor">Error</span>.<span class="constructor">Expected</span></code>, <code class="code"><span class="constructor">Error</span>.<span class="constructor">Size_Exceeded</span></code> or
     <code class="code"><span class="constructor">Error</span>.<span class="constructor">Item_expectation</span></code> if <code class="code">xml</code> is not a valid RSS2 document.<br>
+</div>
+
+<pre><span id="VALto_atom"><span class="keyword">val</span> to_atom</span> : <code class="type"><a href="Syndic_rss2.html#TYPEchannel">channel</a> -> <a href="Syndic_atom.html#TYPEfeed">Syndic_atom.feed</a></code></pre><div class="info ">
+<code class="code">to_atom ch</code> returns an Atom feed that (mostly) contains the same
+    information.<br>
 </div>
 </body></html>

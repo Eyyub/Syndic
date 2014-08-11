@@ -21,13 +21,5 @@
 &nbsp;</div>
 <h1>Module <a href="type_Syndic_rss2.Error.html">Syndic_rss2.Error</a></h1>
 
-<pre><span class="keyword">module</span> Error: <code class="code"><span class="keyword">sig</span></code> <a href="Syndic_rss2.Error.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
-
-<pre><span class="keyword">include</span> <a href="Syndic_error.html">Syndic_error</a></pre>
-
-<pre><span id="EXCEPTIONSize_Exceeded"><span class="keyword">exception</span> Size_Exceeded</span> <span class="keyword">of</span> <code class="type">string * int * int</code></pre>
-
-<pre><span id="EXCEPTIONItem_expectation"><span class="keyword">exception</span> Item_expectation</span></pre>
-
-<pre><span id="VALstring_of_size_exceeded"><span class="keyword">val</span> string_of_size_exceeded</span> : <code class="type">string * int * int -> string</code></pre>
-<pre><span id="VALstring_of_item_exceptation"><span class="keyword">val</span> string_of_item_exceptation</span> : <code class="type">string</code></pre></body></html>
+<pre><span class="keyword">module</span> Error: <code class="type">module type of Syndic_error</code></pre><hr width="100%">
+</body></html>
