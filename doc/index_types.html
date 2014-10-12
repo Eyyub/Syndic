@@ -233,7 +233,7 @@ The outermost level in every RSS 1.0 compliant document is the RDF
 </td></tr>
 <tr><td><a href="Syndic_atom.html#TYPErel">rel</a> [<a href="Syndic_atom.html">Syndic_atom</a>]</td>
 <td><div class="info">
-<a href="Syndic_atom.html#TYPElink"><code class="code"><span class="constructor">Syndic_atom</span>.link</code></a> elements MAY have a "rel" attribute that indicates the
+<a href="Syndic_atom.html#VALlink"><code class="code"><span class="constructor">Syndic_atom</span>.link</code></a> elements MAY have a "rel" attribute that indicates the
     link relation type.
 </div>
 </td></tr>
@@ -246,8 +246,8 @@ The outermost level in every RSS 1.0 compliant document is the RDF
 <tr><td align="left"><br>S</td></tr>
 <tr><td><a href="Syndic_atom.html#TYPEsource">source</a> [<a href="Syndic_atom.html">Syndic_atom</a>]</td>
 <td><div class="info">
-If an <a href="Syndic_atom.html#TYPEentry"><code class="code"><span class="constructor">Syndic_atom</span>.entry</code></a> is copied from one feed into another feed, then
-    the source <a href="Syndic_atom.html#TYPEfeed"><code class="code"><span class="constructor">Syndic_atom</span>.feed</code></a>'s metadata (all child elements of atom:feed
+If an <a href="Syndic_atom.html#VALentry"><code class="code"><span class="constructor">Syndic_atom</span>.entry</code></a> is copied from one feed into another feed, then
+    the source <a href="Syndic_atom.html#VALfeed"><code class="code"><span class="constructor">Syndic_atom</span>.feed</code></a>'s metadata (all child elements of atom:feed
     other than the atom:entry elements) MAY be preserved within the
     copied entry by adding an atom:source child element, if it is not
     already present in the entry, and including some or all of the

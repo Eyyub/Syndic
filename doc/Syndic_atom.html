@@ -112,6 +112,7 @@ Describes a person, corporation, or similar entity (hereafter,
 </div>
 
 
+<pre><span id="VALauthor"><span class="keyword">val</span> author</span> : <code class="type">?uri:Uri.t -> ?email:string -> string -> <a href="Syndic_atom.html#TYPEauthor">author</a></code></pre>
 <pre><code><span id="TYPEcategory"><span class="keyword">type</span> <code class="type"></code>category</span> = {</code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
@@ -162,6 +163,7 @@ The <code class="code">category</code> element conveys information about a categ
 </div>
 
 
+<pre><span id="VALcategory"><span class="keyword">val</span> category</span> : <code class="type">?scheme:Uri.t -> ?label:string -> string -> <a href="Syndic_atom.html#TYPEcategory">category</a></code></pre>
 <pre><code><span id="TYPEgenerator"><span class="keyword">type</span> <code class="type"></code>generator</span> = {</code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
@@ -204,6 +206,7 @@ The <code class="code">generator</code> element's content identifies the agent u
 </div>
 
 
+<pre><span id="VALgenerator"><span class="keyword">val</span> generator</span> : <code class="type">?uri:Uri.t -> ?version:string -> string -> <a href="Syndic_atom.html#TYPEgenerator">generator</a></code></pre>
 <pre><span id="TYPEicon"><span class="keyword">type</span> <code class="type"></code>icon</span> = <code class="type">Uri.t</code> </pre>
 <div class="info ">
 The <code class="code">icon</code> element's content is an IRI reference <code class="code"><span class="constructor">RFC3987</span></code> that
@@ -285,7 +288,7 @@ The <code class="code">id</code> element conveys a permanent, universally unique
 </tr></table>
 
 <div class="info ">
-<a href="Syndic_atom.html#TYPElink"><code class="code"><span class="constructor">Syndic_atom</span>.link</code></a> elements MAY have a "rel" attribute that indicates the
+<a href="Syndic_atom.html#VALlink"><code class="code"><span class="constructor">Syndic_atom</span>.link</code></a> elements MAY have a "rel" attribute that indicates the
     link relation type.  <b>If the "rel" attribute is not present, the
     link element MUST be interpreted as if the link relation type is
     "alternate".</b>
@@ -396,6 +399,7 @@ The <code class="code">id</code> element conveys a permanent, universally unique
 </div>
 
 
+<pre><span id="VALlink"><span class="keyword">val</span> link</span> : <code class="type">?type_media:string -><br>       ?hreflang:string -><br>       ?title:string -><br>       ?length:int -> rel:<a href="Syndic_atom.html#TYPErel">rel</a> -> Uri.t -> <a href="Syndic_atom.html#TYPElink">link</a></code></pre>
 <pre><span id="TYPElogo"><span class="keyword">type</span> <code class="type"></code>logo</span> = <code class="type">Uri.t</code> </pre>
 <div class="info ">
 <code class="code">logo</code> is an IRI reference <code class="code"><span class="constructor">RFC3987</span></code> that identifies an image that
@@ -564,8 +568,8 @@ The <code class="code">id</code> element conveys a permanent, universally unique
 }
 
 <div class="info ">
-If an <a href="Syndic_atom.html#TYPEentry"><code class="code"><span class="constructor">Syndic_atom</span>.entry</code></a> is copied from one feed into another feed, then
-    the source <a href="Syndic_atom.html#TYPEfeed"><code class="code"><span class="constructor">Syndic_atom</span>.feed</code></a>'s metadata (all child elements of atom:feed
+If an <a href="Syndic_atom.html#VALentry"><code class="code"><span class="constructor">Syndic_atom</span>.entry</code></a> is copied from one feed into another feed, then
+    the source <a href="Syndic_atom.html#VALfeed"><code class="code"><span class="constructor">Syndic_atom</span>.feed</code></a>'s metadata (all child elements of atom:feed
     other than the atom:entry elements) MAY be preserved within the
     copied entry by adding an atom:source child element, if it is not
     already present in the entry, and including some or all of the
@@ -593,6 +597,7 @@ If an <a href="Syndic_atom.html#TYPEentry"><code class="code"><span class="const
 </div>
 
 
+<pre><span id="VALsource"><span class="keyword">val</span> source</span> : <code class="type">?categories:<a href="Syndic_atom.html#TYPEcategory">category</a> list -><br>       ?contributors:<a href="Syndic_atom.html#TYPEauthor">author</a> list -><br>       ?generator:<a href="Syndic_atom.html#TYPEgenerator">generator</a> -><br>       ?icon:<a href="Syndic_atom.html#TYPEicon">icon</a> -><br>       ?links:<a href="Syndic_atom.html#TYPElink">link</a> list -><br>       ?logo:<a href="Syndic_atom.html#TYPElogo">logo</a> -><br>       ?rights:<a href="Syndic_atom.html#TYPErights">rights</a> -><br>       ?subtitle:<a href="Syndic_atom.html#TYPEsubtitle">subtitle</a> -><br>       ?updated:<a href="Syndic_atom.html#TYPEupdated">updated</a> -><br>       authors:<a href="Syndic_atom.html#TYPEauthor">author</a> * <a href="Syndic_atom.html#TYPEauthor">author</a> list -><br>       id:<a href="Syndic_atom.html#TYPEid">id</a> -> title:<a href="Syndic_atom.html#TYPEtitle">title</a> -> <a href="Syndic_atom.html#TYPEsource">source</a></code></pre>
 <pre><span id="TYPEmime"><span class="keyword">type</span> <code class="type"></code>mime</span> = <code class="type">string</code> </pre>
 <div class="info ">
 A MIME type that conform to the syntax of a MIME media type, but
@@ -811,6 +816,7 @@ A MIME type that conform to the syntax of a MIME media type, but
 </div>
 
 
+<pre><span id="VALentry"><span class="keyword">val</span> entry</span> : <code class="type">?categories:<a href="Syndic_atom.html#TYPEcategory">category</a> list -><br>       ?content:<a href="Syndic_atom.html#TYPEcontent">content</a> -><br>       ?contributors:<a href="Syndic_atom.html#TYPEauthor">author</a> list -><br>       ?links:<a href="Syndic_atom.html#TYPElink">link</a> list -><br>       ?published:<a href="Syndic_atom.html#TYPEpublished">published</a> -><br>       ?rights:<a href="Syndic_atom.html#TYPErights">rights</a> -><br>       ?sources:<a href="Syndic_atom.html#TYPEsource">source</a> list -><br>       ?summary:<a href="Syndic_atom.html#TYPEsummary">summary</a> -><br>       id:<a href="Syndic_atom.html#TYPEid">id</a> -><br>       authors:<a href="Syndic_atom.html#TYPEauthor">author</a> * <a href="Syndic_atom.html#TYPEauthor">author</a> list -><br>       title:<a href="Syndic_atom.html#TYPEtitle">title</a> -><br>       updated:<a href="Syndic_atom.html#TYPEupdated">updated</a> -> unit -> <a href="Syndic_atom.html#TYPEentry">entry</a></code></pre>
 <pre><code><span id="TYPEfeed"><span class="keyword">type</span> <code class="type"></code>feed</span> = {</code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
@@ -922,7 +928,7 @@ A MIME type that conform to the syntax of a MIME media type, but
       described above.</li>
 </ul>
 
-    If multiple <a href="Syndic_atom.html#TYPEentry"><code class="code"><span class="constructor">Syndic_atom</span>.entry</code></a> elements with the same <a href="Syndic_atom.html#TYPEid"><code class="code"><span class="constructor">Syndic_atom</span>.id</code></a> value appear
+    If multiple <a href="Syndic_atom.html#VALentry"><code class="code"><span class="constructor">Syndic_atom</span>.entry</code></a> elements with the same <a href="Syndic_atom.html#TYPEid"><code class="code"><span class="constructor">Syndic_atom</span>.id</code></a> value appear
     in an Atom Feed Document, they represent the same entry.  Their
     <a href="Syndic_atom.html#TYPEupdated"><code class="code"><span class="constructor">Syndic_atom</span>.updated</code></a> timestamps SHOULD be different.  If an Atom Feed
     Document contains multiple entries with the same <a href="Syndic_atom.html#TYPEid"><code class="code"><span class="constructor">Syndic_atom</span>.id</code></a>, Atom
@@ -935,6 +941,7 @@ A MIME type that conform to the syntax of a MIME media type, but
 </div>
 
 
+<pre><span id="VALfeed"><span class="keyword">val</span> feed</span> : <code class="type">?authors:<a href="Syndic_atom.html#TYPEauthor">author</a> list -><br>       ?categories:<a href="Syndic_atom.html#TYPEcategory">category</a> list -><br>       ?contributors:<a href="Syndic_atom.html#TYPEauthor">author</a> list -><br>       ?generator:<a href="Syndic_atom.html#TYPEgenerator">generator</a> -><br>       ?icon:<a href="Syndic_atom.html#TYPEicon">icon</a> -><br>       ?links:<a href="Syndic_atom.html#TYPElink">link</a> list -><br>       ?logo:<a href="Syndic_atom.html#TYPElogo">logo</a> -><br>       ?rights:<a href="Syndic_atom.html#TYPErights">rights</a> -><br>       ?subtitle:<a href="Syndic_atom.html#TYPEsubtitle">subtitle</a> -><br>       id:<a href="Syndic_atom.html#TYPEid">id</a> -><br>       title:<a href="Syndic_atom.html#TYPEtitle">title</a> -><br>       updated:<a href="Syndic_atom.html#TYPEupdated">updated</a> -> <a href="Syndic_atom.html#TYPEentry">entry</a> list -> <a href="Syndic_atom.html#TYPEfeed">feed</a></code></pre>
 <pre><span id="VALparse"><span class="keyword">val</span> parse</span> : <code class="type">Xmlm.input -> <a href="Syndic_atom.html#TYPEfeed">feed</a></code></pre><div class="info ">
 <code class="code">parse xml</code> returns the feed corresponding to <code class="code">xml</code>.  Beware that
     <code class="code">xml</code> is mutable, so when the parsing fails, one have to create a

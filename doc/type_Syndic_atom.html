@@ -25,16 +25,21 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Html</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Xhtml</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Syndic_xml</span>.t&nbsp;list<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;author&nbsp;=&nbsp;{&nbsp;name&nbsp;:&nbsp;string;&nbsp;uri&nbsp;:&nbsp;<span class="constructor">Uri</span>.t&nbsp;option;&nbsp;email&nbsp;:&nbsp;string&nbsp;option;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;author&nbsp;:&nbsp;?uri:<span class="constructor">Uri</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;?email:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Syndic_atom</span>.author<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;category&nbsp;=&nbsp;{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;term&nbsp;:&nbsp;string;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;scheme&nbsp;:&nbsp;<span class="constructor">Uri</span>.t&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;label&nbsp;:&nbsp;string&nbsp;option;<br>
 &nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;category&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;?scheme:<span class="constructor">Uri</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;?label:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Syndic_atom</span>.category<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;generator&nbsp;=&nbsp;{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;version&nbsp;:&nbsp;string&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;uri&nbsp;:&nbsp;<span class="constructor">Uri</span>.t&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;:&nbsp;string;<br>
 &nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;generator&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;?uri:<span class="constructor">Uri</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;?version:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Syndic_atom</span>.generator<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;icon&nbsp;=&nbsp;<span class="constructor">Uri</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;id&nbsp;=&nbsp;string<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;rel&nbsp;=&nbsp;<span class="constructor">Alternate</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Related</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Self</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Enclosure</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Via</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Link</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Uri</span>.t<br>
@@ -46,6 +51,11 @@
 &nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;:&nbsp;string&nbsp;option;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;length&nbsp;:&nbsp;int&nbsp;option;<br>
 &nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;link&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;?type_media:string&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?hreflang:string&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?title:string&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?length:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;rel:<span class="constructor">Syndic_atom</span>.rel&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Uri</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Syndic_atom</span>.link<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;logo&nbsp;=&nbsp;<span class="constructor">Uri</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;published&nbsp;=&nbsp;<span class="constructor">CalendarLib</span>.<span class="constructor">Calendar</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;rights&nbsp;=&nbsp;<span class="constructor">Syndic_atom</span>.text_construct<br>
@@ -66,6 +76,18 @@
 &nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.title;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;updated&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.updated&nbsp;option;<br>
 &nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;source&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;?categories:<span class="constructor">Syndic_atom</span>.category&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?contributors:<span class="constructor">Syndic_atom</span>.author&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?generator:<span class="constructor">Syndic_atom</span>.generator&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?icon:<span class="constructor">Syndic_atom</span>.icon&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?links:<span class="constructor">Syndic_atom</span>.link&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?logo:<span class="constructor">Syndic_atom</span>.logo&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?rights:<span class="constructor">Syndic_atom</span>.rights&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?subtitle:<span class="constructor">Syndic_atom</span>.subtitle&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?updated:<span class="constructor">Syndic_atom</span>.updated&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;authors:<span class="constructor">Syndic_atom</span>.author&nbsp;*&nbsp;<span class="constructor">Syndic_atom</span>.author&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;id:<span class="constructor">Syndic_atom</span>.id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;title:<span class="constructor">Syndic_atom</span>.title&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Syndic_atom</span>.source<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;mime&nbsp;=&nbsp;string<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;content&nbsp;=<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Text</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
@@ -88,6 +110,19 @@
 &nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.title;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;updated&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.updated;<br>
 &nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;entry&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;?categories:<span class="constructor">Syndic_atom</span>.category&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?content:<span class="constructor">Syndic_atom</span>.content&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?contributors:<span class="constructor">Syndic_atom</span>.author&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?links:<span class="constructor">Syndic_atom</span>.link&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?published:<span class="constructor">Syndic_atom</span>.published&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?rights:<span class="constructor">Syndic_atom</span>.rights&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?sources:<span class="constructor">Syndic_atom</span>.source&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?summary:<span class="constructor">Syndic_atom</span>.summary&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;id:<span class="constructor">Syndic_atom</span>.id&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;authors:<span class="constructor">Syndic_atom</span>.author&nbsp;*&nbsp;<span class="constructor">Syndic_atom</span>.author&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;title:<span class="constructor">Syndic_atom</span>.title&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;updated:<span class="constructor">Syndic_atom</span>.updated&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Syndic_atom</span>.entry<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;feed&nbsp;=&nbsp;{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;authors&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.author&nbsp;list;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;categories&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.category&nbsp;list;<br>
@@ -103,6 +138,19 @@
 &nbsp;&nbsp;&nbsp;&nbsp;updated&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.updated;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;entries&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.entry&nbsp;list;<br>
 &nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;feed&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;?authors:<span class="constructor">Syndic_atom</span>.author&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?categories:<span class="constructor">Syndic_atom</span>.category&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?contributors:<span class="constructor">Syndic_atom</span>.author&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?generator:<span class="constructor">Syndic_atom</span>.generator&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?icon:<span class="constructor">Syndic_atom</span>.icon&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?links:<span class="constructor">Syndic_atom</span>.link&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?logo:<span class="constructor">Syndic_atom</span>.logo&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?rights:<span class="constructor">Syndic_atom</span>.rights&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;?subtitle:<span class="constructor">Syndic_atom</span>.subtitle&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;id:<span class="constructor">Syndic_atom</span>.id&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;title:<span class="constructor">Syndic_atom</span>.title&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;updated:<span class="constructor">Syndic_atom</span>.updated&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Syndic_atom</span>.entry&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Syndic_atom</span>.feed<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;parse&nbsp;:&nbsp;<span class="constructor">Xmlm</span>.input&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Syndic_atom</span>.feed<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_xml&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.feed&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Syndic_xml</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;output&nbsp;:&nbsp;<span class="constructor">Syndic_atom</span>.feed&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Xmlm</span>.dest&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
