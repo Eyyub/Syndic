@@ -50,6 +50,9 @@ type link =
     length: int option;
   }
 
+let link ?type_media ?hreflang ?title ?length ~rel href =
+  { href ; rel ; type_media ; hreflang ; title ; length }
+
 type link' = [
   | `HREF of string
   | `Rel of string
@@ -108,6 +111,9 @@ type author =
     uri: Uri.t option;
     email: string option;
   }
+
+let author ?uri ?email name =
+  { uri ; email ; name }
 
 type author' = [
   | `Name of string
@@ -185,6 +191,9 @@ type category =
     label: string option;
   }
 
+let category ?scheme ?label term =
+  { scheme ; label ; term }
+
 type category' = [
   | `Term of string
   | `Scheme of string
@@ -243,6 +252,8 @@ type generator =
     uri: Uri.t option;
     content: string;
   }
+
+let generator ?uri ?version content = { uri ; version ; content }
 
 type generator' = [
   | `URI of string
@@ -505,6 +516,15 @@ type source =
     title: title;
     updated: updated option;
   }
+
+let source
+    ?(categories=[]) ?(contributors=[]) ?generator
+    ?icon ?(links=[]) ?logo ?rights ?subtitle
+    ?updated ~authors ~id ~title
+  =
+  { authors ; categories ; contributors ; generator ;
+    icon ; id ; links ; logo ; rights ; subtitle ;
+    title ; updated }
 
 type source' = [
   | `Author of author
@@ -771,6 +791,15 @@ type entry =
     updated: updated;
   }
 
+let entry
+  ?(categories=[]) ?content ?(contributors=[])
+  ?(links=[]) ?published ?rights ?(sources=[]) ?summary
+  ~id ~authors ~title ~updated ()
+  =
+  { authors ; categories ; content ; contributors ;
+    id ; links ; published ; rights ; sources ; summary ;
+    title ; updated }
+
 type entry' = [
   | `Author of author
   | `Category of category
@@ -1021,6 +1050,15 @@ type feed =
     entries: entry list;
   }
 
+let feed
+  ?(authors=[]) ?(categories=[]) ?(contributors=[]) ?generator
+  ?icon ?(links=[]) ?logo ?rights ?subtitle
+  ~id ~title ~updated entries
+  =
+  { authors ; categories ; contributors ; generator ;
+    icon ; id ; links ; logo ; rights ; subtitle ; title ; updated ; entries }
+
+
 let make_feed ~pos (l : _ list) =
   (* atomAuthor* *)
   let authors = List.fold_left
@@ -1242,15 +1280,14 @@ let add_node_date tag date nodes =
 let source_to_xml (s: source) =
   let (a0, a) = s.authors in
   let nodes =
-    [author_to_xml a0;
-     node_data (atom "id") s.id;
-     text_construct_to_xml "title" s.title ]
-    |> add_nodes_map author_to_xml a
-    |> add_nodes_map category_to_xml s.categories
-    |> add_nodes_map contributor_to_xml s.contributors
+    (node_data (atom "id") s.id
+     :: text_construct_to_xml "title" s.title
+     :: author_to_xml a0 :: List.map author_to_xml a)
+    |> add_nodes_rev_map category_to_xml s.categories
+    |> add_nodes_rev_map contributor_to_xml s.contributors
     |> add_node_option generator_to_xml s.generator
     |> add_node_option (node_uri (atom "icon")) s.icon
-    |> add_nodes_map link_to_xml s.links
+    |> add_nodes_rev_map link_to_xml s.links
     |> add_node_option (node_uri (atom "logo")) s.logo
     |> add_node_option (text_construct_to_xml "rights") s.rights
     |> add_node_option (text_construct_to_xml "subtitle") s.subtitle
@@ -1281,18 +1318,17 @@ let content_to_xml (c: content) =
 let entry_to_xml (e: entry) =
   let (a0, a) = e.authors in
   let nodes =
-    [author_to_xml a0;
-     node_data (atom "id") e.id;
-     text_construct_to_xml "title" e.title;
-     node_data (atom "updated") (string_of_date e.updated) ]
-    |> add_nodes_map author_to_xml a
-    |> add_nodes_map category_to_xml e.categories
+    (node_data (atom "id") e.id
+     :: text_construct_to_xml "title" e.title
+     :: node_data (atom "updated") (string_of_date e.updated)
+     :: author_to_xml a0 :: List.map author_to_xml a)
+    |> add_nodes_rev_map category_to_xml e.categories
     |> add_node_option content_to_xml e.content
-    |> add_nodes_map contributor_to_xml e.contributors
-    |> add_nodes_map link_to_xml e.links
+    |> add_nodes_rev_map contributor_to_xml e.contributors
+    |> add_nodes_rev_map link_to_xml e.links
     |> add_node_date (atom "published") e.published
     |> add_node_option (text_construct_to_xml "rights") e.rights
-    |> add_nodes_map source_to_xml e.sources
+    |> add_nodes_rev_map source_to_xml e.sources
     |> add_node_option (text_construct_to_xml "summary") e.summary in
   XML.Node(dummy_pos, atom "entry", nodes)
 
@@ -1301,16 +1337,16 @@ let to_xml (f: feed) =
     (node_data (atom "id") f.id
      :: text_construct_to_xml "title" f.title
      :: node_data (atom "updated") (string_of_date f.updated)
-     :: List.map author_to_xml f.authors)
-    |> add_nodes_map category_to_xml f.categories
-    |> add_nodes_map contributor_to_xml f.contributors
+     :: List.map entry_to_xml f.entries)
+    |> add_nodes_rev_map author_to_xml (List.rev f.authors)
+    |> add_nodes_rev_map category_to_xml f.categories
+    |> add_nodes_rev_map contributor_to_xml f.contributors
     |> add_node_option generator_to_xml f.generator
     |> add_node_option (node_uri (atom "icon")) f.icon
-    |> add_nodes_map link_to_xml f.links
+    |> add_nodes_rev_map link_to_xml f.links
     |> add_node_option (node_uri (atom "logo")) f.logo
     |> add_node_option (text_construct_to_xml "rights") f.rights
-    |> add_node_option (text_construct_to_xml "subtitle") f.subtitle
-    |> add_nodes_map entry_to_xml f.entries in
+    |> add_node_option (text_construct_to_xml "subtitle") f.subtitle in
   XML.Node(dummy_pos, ((atom_ns, "feed"), [("", "xmlns"), atom_ns]), nodes)
 
 
@@ -1349,13 +1385,9 @@ let add_entries_of_feed entries (uri_opt, feed) : entry list =
     | None -> feed.links
     | Some uri ->
        if List.exists is_alternate_Atom feed.links then feed.links
-       else { href = uri;
-              rel = Alternate;
-              type_media = Some "application/atom+xml";
-              hreflang = None;
-              title = None;
-              length = None;
-            } :: feed.links in
+       else
+         link ~type_media:"application/atom+xml" ~rel:Alternate uri
+         :: feed.links in
   let source authors =
     { authors;
       categories = feed.categories;
